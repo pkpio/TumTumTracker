@@ -1,0 +1,22 @@
+<resources>
+
+    <string name="app_name">Tum Tum Tracker</string>
+    <string name="title_activity_main">Tum Tum Tracker</string>
+    <string name="credits">Credits</string>
+    <string name="about">About</string>
+    <string name="statusMessage">Updating..</string>
+
+    <!-- credits -->
+    <string name="sudheer">Sudheer Katta</string>
+    <string name="sudheerWork">Electronics development and testing</string>
+    <string name="sampath">Sampath Satti</string>
+    <string name="sampathWork">Electronics development and testing</string>
+    <string name="jithu">Jithendar Anumula</string>
+    <string name="jithuWork">Electronics development and testing</string>
+    <string name="praveen">Praveen Kumar Pendyala</string>
+    <string name="praveenWork">Website and Android application</string>
+
+    <!-- About -->
+    <string name="aboutTTT">TumTumTracker, shortly TTT, is a project still in the development stages. On successful completion it will be able to help you track TumTum using either the Web or Android application and also a board displayed each bus stop</string>
+
+</resources>

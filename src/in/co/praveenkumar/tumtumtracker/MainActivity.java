@@ -18,6 +18,8 @@ import com.google.android.maps.OverlayItem;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -44,7 +46,7 @@ public class MainActivity extends MapActivity {
 	private static final String TAG_DESCRIPTION = "description";
 	private static final String TAG_LAST_UPDATED = "lastupdated";
 
-	// contacts JSONArray
+	// Markers JSONArray
 	JSONArray markers = null;
 
 	// Mapview variables
@@ -53,6 +55,7 @@ public class MainActivity extends MapActivity {
 	Drawable drawable;
 	ItemizedMarkersOverlay itemizedoverlay;
 	private MapController myMapController;
+	
 
 	// Define default center point
 	GeoPoint centerGeoPoint = new GeoPoint((int) (19.134786 * 1E6),
@@ -156,13 +159,13 @@ public class MainActivity extends MapActivity {
 		JSONObject json = jParser.getJSONFromFile();
 
 		try {
-			// Getting Array of Contacts
+			// Getting Array of Markers
 			markers = json.getJSONArray(TAG_MARKERS);
 
 			// Remove existing markers
 			clearExistingMarkers();
 
-			// looping through All Contacts
+			// looping through All Markers
 			for (int i = 0; i < markers.length(); i++) {
 				JSONObject c = markers.getJSONObject(i);
 
@@ -282,6 +285,20 @@ public class MainActivity extends MapActivity {
 		case 0:
 			dialog.setContentView(R.layout.about);
 			dialog.setTitle("About TumTumTracker");
+			PackageInfo pInfo;
+			String appVersion = null;
+			try {
+				pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+				appVersion = pInfo.versionName;
+			} catch (NameNotFoundException e) {
+				// TODO Auto-generated catch block
+				Toast.makeText(getBaseContext(), "unable get app version",
+						Toast.LENGTH_SHORT).show();
+				e.printStackTrace();
+			}
+			TextView version = (TextView) dialog.findViewById(R.id.version);
+			version.setText("Version : " + appVersion);
+
 			break;
 
 		case 1:

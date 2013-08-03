@@ -18,5 +18,8 @@
 
     <!-- About -->
     <string name="aboutTTT">TumTumTracker, shortly TTT, is a project still in the development stages. On successful completion it will be able to help you track TumTum using either the Web or Android application and also a board displayed each bus stop</string>
+    <string name="version">Version : </string>
+    <string name="issuesHeading">Known issues</string>
+    <string name="issues">-Force closes on no internet connection\n-A few known NULL pointer exceptions\n-Showing a pop dialog instead of an anchored popup with the marker\n\nPlease bear with the issues. We are hoping to fix all of these, soon before the project goes live.</string>
 
 </resources>

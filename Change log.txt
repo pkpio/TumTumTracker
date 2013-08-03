@@ -1,0 +1,17 @@
+V3.1 Release preview
+-Fixed Map not loading issue caused due to usage of wrong API key (Earlier, I used API V1 key instead of V2)
+
+V3.0 Release preview
+-Totally rewrote the app using GMM V2 dumping V1 used in earlier versions
+-Popups of marker info are now attached to the marker
+-Update frequency to 1500ms instead of the available maximum speed in earlier releases
+
+V2.1 Beta
+-Minor changes to menus
+
+V2.0 Beta
+-Auto refresh at maximum possible speed
+-Migrated to latest SDK version
+
+V1.0 Alpha
+-Development version

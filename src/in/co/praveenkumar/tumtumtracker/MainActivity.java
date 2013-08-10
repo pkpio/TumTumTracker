@@ -9,7 +9,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.pm.PackageInfo;
@@ -18,6 +17,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,14 +26,14 @@ import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MainActivity extends Activity {
+public class MainActivity extends FragmentActivity {
 	// Settings
 	private static String url = "http://home.iitb.ac.in/~praveendath92/TTT/markers.json";
 	final int updateDelay = 1500; // In milliseconds
@@ -221,7 +221,7 @@ public class MainActivity extends Activity {
 
 		@Override
 		protected void onPreExecute() {
-			super.onPreExecute();
+			super.onPreExecute();			
 		}
 
 		protected void onPostExecute(Long result) {
@@ -258,7 +258,12 @@ public class MainActivity extends Activity {
 				lastUpdatedTextView.setText("last updated : "
 						+ lastModDateformatted);
 			} else {
-				// Creating JSON Parser instance
+				// Creating JSON Parser instance to get json file location
+				/****
+				 * JSON file location is a constant string defined in JSONParser class
+				 * We are getting file to update last updated as file updated time as we
+				 * are loading from file right now
+				****/
 				JSONParser jParser = new JSONParser();
 				String jsonRelPath = jParser.jsonFile;
 				File filePath = new File(
@@ -277,7 +282,7 @@ public class MainActivity extends Activity {
 	}
 
 	private boolean lastKnownLocations() {
-
+		
 		// Check if folder exist. Create one if it doesn't
 		String file = android.os.Environment.getExternalStorageDirectory()
 				.getPath() + "/TumTumTracker";
@@ -326,8 +331,8 @@ public class MainActivity extends Activity {
 		// Do a null check to confirm that we have not already instantiated the
 		// map.
 		if (mMap == null) {
-			mMap = ((MapFragment) getFragmentManager().findFragmentById(
-					R.id.map)).getMap();
+			mMap = ((SupportMapFragment) getSupportFragmentManager()
+				     .findFragmentById(R.id.map)).getMap();
 
 			// Check if we were successful in obtaining the map.
 			if (mMap != null) {

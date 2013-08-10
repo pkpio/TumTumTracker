@@ -3,83 +3,80 @@ package in.co.praveenkumar.tumtumtracker;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.google.android.maps.GeoPoint;
-import com.google.android.maps.MapActivity;
-import com.google.android.maps.MapController;
-import com.google.android.maps.MapView;
-import com.google.android.maps.Overlay;
-import com.google.android.maps.OverlayItem;
-
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends MapActivity {
-	// url to make request
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
+
+public class MainActivity extends Activity {
+	// Settings
 	private static String url = "http://home.iitb.ac.in/~praveendath92/TTT/markers.json";
+	final int updateDelay = 1500; // In milliseconds
 
 	// JSON Node names
-	// private static final String TAG_TITLE = "title";
-	// private static final String TAG_CENTER = "id";
-	// private static final String TAG_CENTER_LAT = "lat";
-	// private static final String TAG_CENTER_LNG = "lng";
 	private static final String TAG_MARKERS = "markers";
-	// private static final String TAG_ID = "id";
 	private static final String TAG_LAT = "lat";
 	private static final String TAG_LNG = "lng";
 	private static final String TAG_DESCRIPTION = "description";
 	private static final String TAG_LAST_UPDATED = "lastupdated";
+	private static final String TAG_TYPE = "type";
 
-	// Markers JSONArray
+	// JSON variables
 	JSONArray markers = null;
+	JSONObject json = null;
 
-	// Mapview variables
-	MapView mapView;
-	List<Overlay> mapOverlays;
-	Drawable drawable;
-	ItemizedMarkersOverlay itemizedoverlay;
-	private MapController myMapController;
-	
-
-	// Define default center point
-	GeoPoint centerGeoPoint = new GeoPoint((int) (19.134786 * 1E6),
-			(int) (72.914584 * 1E6));
+	// Map variables
+	GoogleMap mMap;
+	private static final LatLng defaultCenter = new LatLng(19.134786, 72.914584);
 
 	// Other declarations
 	ProgressDialog firstTimeDialog;
+	Marker mapMarkers[] = null;
+	Boolean updateLastUpdated = false;
 
 	@Override
-	public void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.main);
+		setUpMapIfNeeded();
 
-		mapView = (MapView) findViewById(R.id.mapview);
-		myMapController = mapView.getController();
-		myMapController.animateTo(centerGeoPoint);
-		myMapController.setZoom(17);
-
-		mapOverlays = mapView.getOverlays();
-		drawable = this.getResources().getDrawable(R.drawable.androidmarker);
-		itemizedoverlay = new ItemizedMarkersOverlay(drawable, this);
+		// Setting up Camera params..center, zoom, tilt, bearing
+		CameraPosition cameraPosition = new CameraPosition.Builder()
+				.target(defaultCenter) // center map to IITB campus
+				.zoom(15) // zoom level 15
+				.bearing(0) // orientation of the camera to north(default)
+				.tilt(60) // tilt of the camera to 60 degrees
+				.build(); // Create a CameraPosition from the builder
+		mMap.animateCamera(CameraUpdateFactory
+				.newCameraPosition(cameraPosition));
 
 		if (lastKnownLocations()) {
-			extractToItemizedoverlayFromJSONFile();
+			getJsonFromFile();
 			new tryAsyncJSONextract().execute(url);
 		} else {
 			// Setting up dialogs
@@ -99,119 +96,122 @@ public class MainActivity extends MapActivity {
 		return true;
 	}
 
-	@SuppressWarnings("deprecation")
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case R.id.about:
-			showDialog(0);
-			break;
-		case R.id.credits:
-			showDialog(1);
-			break;
-		}
-		return true;
+	public void getJsonFromFile() {
+		// Creating JSON Parser instance
+		JSONParser jParser = new JSONParser();
+
+		// getting JSON string from File
+		json = jParser.getJSONFromFile();
+
+		// Extract Markers from Json and plot
+		overlayMarkersFromJson(json);
+
+		// Update last updated time
+		updateLastUpdated(false);// False => Update for file
 	}
 
-	public void extractToItemizedoverlayFromJSONUrl(String url) {
+	public void getJsonFromUrl(String url) {
 		// Creating JSON Parser instance
 		JSONParser jParser = new JSONParser();
 
 		// getting JSON string from URL
-		JSONObject json = jParser.getJSONFromUrl(url);
+		json = jParser.getJSONFromUrl(url);
 
-		try {
-			// Getting Array of Markers
-			markers = json.getJSONArray(TAG_MARKERS);
-
-			// Clear existing Markers -- mapView.invalidate() is done on post
-			// execute
-			clearExistingMarkers();
-
-			// looping through All Markers
-			for (int i = 0; i < markers.length(); i++) {
-				JSONObject c = markers.getJSONObject(i);
-
-				// Storing each json item in variable
-				// String id = c.getString(TAG_ID);
-				double lat = c.getDouble(TAG_LAT);
-				double lng = c.getDouble(TAG_LNG);
-				String description = c.getString(TAG_DESCRIPTION);
-				String lastupdated = c.getString(TAG_LAST_UPDATED);
-
-				GeoPoint point = new GeoPoint((int) (lat * 1E6),
-						(int) (lng * 1E6));
-				OverlayItem overlayitem = new OverlayItem(point, description,
-						"Last updated : " + lastupdated);
-				itemizedoverlay.addOverlay(overlayitem);
-			}
-			mapOverlays.add(itemizedoverlay);
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
+		// Plotting can't be done here as it is executed in Background thread
 	}
 
-	public void extractToItemizedoverlayFromJSONFile() {
-		// Creating JSON Parser instance
-		JSONParser jParser = new JSONParser();
+	public Boolean overlayMarkersFromJson(JSONObject json) {
 
-		// getting JSON string from URL
-		JSONObject json = jParser.getJSONFromFile();
+		if (json != null) {
+			updateLastUpdated = true;
+			try {
+				// Getting Array of Markers
+				markers = json.getJSONArray(TAG_MARKERS);
 
-		try {
-			// Getting Array of Markers
-			markers = json.getJSONArray(TAG_MARKERS);
+				// Clear existing markers
+				mMap.clear();
 
-			// Remove existing markers
-			clearExistingMarkers();
+				// looping through All Markers
+				for (int i = 0; i < markers.length(); i++) {
+					JSONObject c = markers.getJSONObject(i);
 
-			// looping through All Markers
-			for (int i = 0; i < markers.length(); i++) {
-				JSONObject c = markers.getJSONObject(i);
+					// Storing each json item in variable
+					// String id = c.getString(TAG_ID);
+					double lat = c.getDouble(TAG_LAT);
+					double lng = c.getDouble(TAG_LNG);
+					String description = c.getString(TAG_DESCRIPTION);
+					String lastupdated = c.getString(TAG_LAST_UPDATED);
+					int type = c.getInt(TAG_TYPE);
 
-				// Storing each json item in variable
-				// String id = c.getString(TAG_ID);
-				double lat = c.getDouble(TAG_LAT);
-				double lng = c.getDouble(TAG_LNG);
-				String description = c.getString(TAG_DESCRIPTION);
-				String lastupdated = c.getString(TAG_LAST_UPDATED);
+					switch (type) {
+					case 1:
+						mMap.addMarker(new MarkerOptions()
+								.position(new LatLng(lat, lng))
+								.title(description)
+								.snippet("Last updated : " + lastupdated)
+								.icon(BitmapDescriptorFactory
+										.fromResource(R.drawable.androidmarker_blue)));
+						break;
+					case 2:
+						mMap.addMarker(new MarkerOptions()
+								.position(new LatLng(lat, lng))
+								.title(description)
+								.snippet("Last updated : " + lastupdated)
+								.icon(BitmapDescriptorFactory
+										.fromResource(R.drawable.androidmarker_green)));
+						break;
+					case 3:
+						mMap.addMarker(new MarkerOptions()
+								.position(new LatLng(lat, lng))
+								.title(description)
+								.snippet("Last updated : " + lastupdated)
+								.icon(BitmapDescriptorFactory
+										.fromResource(R.drawable.androidmarker_red)));
+						break;
+					case 4:
+						mMap.addMarker(new MarkerOptions()
+								.position(new LatLng(lat, lng))
+								.title(description)
+								.snippet("Last updated : " + lastupdated)
+								.icon(BitmapDescriptorFactory
+										.fromResource(R.drawable.androidmarker_yellow)));
+						break;
+					// Arbitrarily chosen type = 10 for bus stops
+					case 10:
+						mMap.addMarker(new MarkerOptions()
+								.position(new LatLng(lat, lng))
+								.title(description)
+								.icon(BitmapDescriptorFactory
+										.fromResource(R.drawable.bus_stop)));
+						break;
+					default:
+						mMap.addMarker(new MarkerOptions()
+								.position(new LatLng(lat, lng))
+								.title(description)
+								.snippet("Last updated : " + lastupdated)
+								.icon(BitmapDescriptorFactory
+										.fromResource(R.drawable.androidmarker_black)));
+						break;
 
-				GeoPoint point = new GeoPoint((int) (lat * 1E6),
-						(int) (lng * 1E6));
-				OverlayItem overlayitem = new OverlayItem(point, description,
-						"Last updated : " + lastupdated);
-				itemizedoverlay.addOverlay(overlayitem);
+					}
+				}
+			} catch (JSONException e) {
+				e.printStackTrace();
+				throw new RuntimeException(e);
 			}
-			mapOverlays.add(itemizedoverlay);
-
-			// Updating last modified location...
-			String jsonRelPath = jParser.jsonFile;
-			File filePath = new File(Environment.getExternalStorageDirectory(),
-					jsonRelPath);
-			Date lastModDate = new Date(filePath.lastModified());
-			SimpleDateFormat format = new SimpleDateFormat("MM/dd hh:mm:ss a");
-			String lastModDateformatted = format.format(lastModDate);
-
-			TextView lastUpdatedTextView = (TextView) this
-					.findViewById(R.id.lastUpdatedView);
-			lastUpdatedTextView.setText("last updated : "
-					+ lastModDateformatted);
-		} catch (JSONException e) {
-			e.printStackTrace();
+		} else {
+			updateLastUpdated = false;
 		}
-		mapView.invalidate();
-	}
 
-	@Override
-	protected boolean isRouteDisplayed() {
-		// TODO Auto-generated method stub
-		return false;
+		return null;
+
 	}
 
 	// Async thread for network activity
 	private class tryAsyncJSONextract extends AsyncTask<String, Integer, Long> {
+
 		protected Long doInBackground(String... url) {
-			extractToItemizedoverlayFromJSONUrl(url[0]);
+			getJsonFromUrl(url[0]);
 			return null;
 		}
 
@@ -225,31 +225,55 @@ public class MainActivity extends MapActivity {
 		}
 
 		protected void onPostExecute(Long result) {
-			mapView.invalidate();
 			try {
 				firstTimeDialog.dismiss();
 			} catch (Exception e) {
 				// nothing
 			}
-			updateLastUpdated();
-			new tryAsyncJSONextract().execute(url);
+			overlayMarkersFromJson(json);
+			updateLastUpdated(true); // True => Update for URL
+			// Wait before trying for next update..
+			Handler myHandler = new Handler();
+			myHandler.postDelayed(delayedUpdateLooper, updateDelay);
 		}
 	}
 
-	private void updateLastUpdated() {
-		Date now = new Date(System.currentTimeMillis());
-		SimpleDateFormat format = new SimpleDateFormat("MM/dd hh:mm:ss a");
-		String lastModDateformatted = format.format(now);
-		TextView lastUpdatedTextView = (TextView) this
-				.findViewById(R.id.lastUpdatedView);
-		lastUpdatedTextView.setText("last updated : " + lastModDateformatted);
-	}
+	private Runnable delayedUpdateLooper = new Runnable() {
+		@Override
+		public void run() {
+			new tryAsyncJSONextract().execute(url);
+		}
+	};
 
-	private void clearExistingMarkers() {
-		if (itemizedoverlay.size() != 0)
-			itemizedoverlay.removeAllOverlays();
-		if (!mapOverlays.isEmpty())
-			mapOverlays.clear();
+	@SuppressLint("SimpleDateFormat")
+	private void updateLastUpdated(Boolean updateType) {
+		if (updateLastUpdated) {
+			if (updateType) {
+				Date now = new Date(System.currentTimeMillis());
+				SimpleDateFormat format = new SimpleDateFormat(
+						"MM/dd hh:mm:ss a");
+				String lastModDateformatted = format.format(now);
+				TextView lastUpdatedTextView = (TextView) this
+						.findViewById(R.id.lastUpdatedView);
+				lastUpdatedTextView.setText("last updated : "
+						+ lastModDateformatted);
+			} else {
+				// Creating JSON Parser instance
+				JSONParser jParser = new JSONParser();
+				String jsonRelPath = jParser.jsonFile;
+				File filePath = new File(
+						Environment.getExternalStorageDirectory(), jsonRelPath);
+				Date lastModDate = new Date(filePath.lastModified());
+				SimpleDateFormat format = new SimpleDateFormat(
+						"MM/dd hh:mm:ss a");
+				String lastModDateformatted = format.format(lastModDate);
+
+				TextView lastUpdatedTextView = (TextView) this
+						.findViewById(R.id.lastUpdatedView);
+				lastUpdatedTextView.setText("last updated : "
+						+ lastModDateformatted);
+			}
+		}
 	}
 
 	private boolean lastKnownLocations() {
@@ -276,6 +300,41 @@ public class MainActivity extends MapActivity {
 			return true;
 		}
 
+	}
+
+	@SuppressWarnings("deprecation")
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.about:
+			showDialog(0);
+			break;
+		case R.id.credits:
+			showDialog(1);
+			break;
+		case R.id.help:
+			showDialog(2);
+			break;
+		case R.id.changelog:
+			showDialog(3);
+			break;
+		}
+		return true;
+	}
+
+	private void setUpMapIfNeeded() {
+		// Do a null check to confirm that we have not already instantiated the
+		// map.
+		if (mMap == null) {
+			mMap = ((MapFragment) getFragmentManager().findFragmentById(
+					R.id.map)).getMap();
+
+			// Check if we were successful in obtaining the map.
+			if (mMap != null) {
+				// The Map is verified. It is now safe to manipulate the map.
+
+			}
+		}
 	}
 
 	public Dialog onCreateDialog(int id) {
@@ -307,9 +366,18 @@ public class MainActivity extends MapActivity {
 			break;
 
 		case 2:
+			dialog.setContentView(R.layout.help);
+			dialog.setTitle("Help");
+
+			break;
+
+		case 3:
+			dialog.setContentView(R.layout.change_log);
+			dialog.setTitle("Change log");
 
 			break;
 		}
 		return dialog;
 	}
+
 }

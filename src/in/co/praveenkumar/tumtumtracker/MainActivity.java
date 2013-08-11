@@ -21,6 +21,8 @@ import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -221,7 +223,8 @@ public class MainActivity extends FragmentActivity {
 
 		@Override
 		protected void onPreExecute() {
-			super.onPreExecute();			
+			setStatusMessage(1);// 1 => Updating..
+			super.onPreExecute();
 		}
 
 		protected void onPostExecute(Long result) {
@@ -231,6 +234,7 @@ public class MainActivity extends FragmentActivity {
 				// nothing
 			}
 			overlayMarkersFromJson(json);
+			setStatusMessage(0);// 0 => Updated !
 			updateLastUpdated(true); // True => Update for URL
 			// Wait before trying for next update..
 			Handler myHandler = new Handler();
@@ -260,10 +264,10 @@ public class MainActivity extends FragmentActivity {
 			} else {
 				// Creating JSON Parser instance to get json file location
 				/****
-				 * JSON file location is a constant string defined in JSONParser class
-				 * We are getting file to update last updated as file updated time as we
-				 * are loading from file right now
-				****/
+				 * JSON file location is a constant string defined in JSONParser
+				 * class We are getting file to update last updated as file
+				 * updated time as we are loading from file right now
+				 ****/
 				JSONParser jParser = new JSONParser();
 				String jsonRelPath = jParser.jsonFile;
 				File filePath = new File(
@@ -282,7 +286,7 @@ public class MainActivity extends FragmentActivity {
 	}
 
 	private boolean lastKnownLocations() {
-		
+
 		// Check if folder exist. Create one if it doesn't
 		String file = android.os.Environment.getExternalStorageDirectory()
 				.getPath() + "/TumTumTracker";
@@ -303,6 +307,28 @@ public class MainActivity extends FragmentActivity {
 			return false;
 		} else {
 			return true;
+		}
+
+	}
+
+	private void setStatusMessage(int updateType) {
+		TextView lastUpdatedTextView = (TextView) this
+				.findViewById(R.id.statusMessage);
+		ProgressBar progressbar = (ProgressBar) this
+				.findViewById(R.id.progressBar);
+		switch (updateType) {
+		case 0:
+			lastUpdatedTextView.setText("Updated !");
+			progressbar.setVisibility(View.GONE);
+			break;
+		case 1:
+			lastUpdatedTextView.setText("Updating..");
+			progressbar.setVisibility(View.VISIBLE);
+			break;
+		default:
+			lastUpdatedTextView.setText("Updating..");
+			break;
+
 		}
 
 	}
@@ -332,7 +358,7 @@ public class MainActivity extends FragmentActivity {
 		// map.
 		if (mMap == null) {
 			mMap = ((SupportMapFragment) getSupportFragmentManager()
-				     .findFragmentById(R.id.map)).getMap();
+					.findFragmentById(R.id.map)).getMap();
 
 			// Check if we were successful in obtaining the map.
 			if (mMap != null) {

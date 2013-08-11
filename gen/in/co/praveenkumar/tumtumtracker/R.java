@@ -160,9 +160,9 @@ containing a value of this type.
         public static final int none=0x7f040000;
         public static final int normal=0x7f040001;
         public static final int parentlayout=0x7f040007;
-        public static final int progressBar=0x7f040009;
+        public static final int progressBar=0x7f04000a;
         public static final int satellite=0x7f040002;
-        public static final int statusMessage=0x7f04000a;
+        public static final int statusMessage=0x7f040009;
         public static final int statusMessageParent=0x7f040008;
         public static final int terrain=0x7f040003;
         public static final int version=0x7f040006;
@@ -181,7 +181,7 @@ containing a value of this type.
         public static final int about=0x7f050014;
         /**  About 
          */
-        public static final int aboutTTT=0x7f050030;
+        public static final int aboutTTT=0x7f050032;
         public static final int app_name=0x7f050011;
         /**   Title for notification shown when GooglePlayServices is unavailable [CHAR LIMIT=70] 
          */
@@ -248,70 +248,74 @@ containing a value of this type.
         public static final int common_signin_button_text_long=0x7f05000d;
         public static final int credits=0x7f050013;
         public static final int help=0x7f050015;
-        public static final int help_black_marker=0x7f050039;
-        public static final int help_blue_marker=0x7f050035;
-        public static final int help_bus_stop=0x7f05003a;
-        public static final int help_green_marker=0x7f050036;
-        public static final int help_last_updated=0x7f05003b;
-        public static final int help_last_updated_marker=0x7f05003d;
-        public static final int help_last_updated_markers=0x7f05003c;
+        public static final int help_black_marker=0x7f05003b;
+        public static final int help_blue_marker=0x7f050037;
+        public static final int help_bus_stop=0x7f05003c;
+        public static final int help_green_marker=0x7f050038;
+        public static final int help_last_updated=0x7f05003d;
+        public static final int help_last_updated_marker=0x7f05003f;
+        public static final int help_last_updated_markers=0x7f05003e;
         /**  Help 
          */
-        public static final int help_marker_colors=0x7f050034;
-        public static final int help_markers_update_info=0x7f05003f;
-        public static final int help_notice=0x7f050040;
-        public static final int help_notice_text=0x7f050041;
-        public static final int help_other_info=0x7f05003e;
-        public static final int help_red_marker=0x7f050037;
-        public static final int help_yellow_marker=0x7f050038;
-        public static final int issues=0x7f050033;
-        public static final int issuesHeading=0x7f050032;
-        public static final int jithu=0x7f05002c;
-        public static final int jithuWork=0x7f05002d;
-        public static final int praveen=0x7f05002e;
-        public static final int praveenWork=0x7f05002f;
-        public static final int sampath=0x7f05002a;
-        public static final int sampathWork=0x7f05002b;
+        public static final int help_marker_colors=0x7f050036;
+        public static final int help_markers_update_info=0x7f050041;
+        public static final int help_notice=0x7f050042;
+        public static final int help_notice_text=0x7f050043;
+        public static final int help_other_info=0x7f050040;
+        public static final int help_red_marker=0x7f050039;
+        public static final int help_yellow_marker=0x7f05003a;
+        public static final int issues=0x7f050035;
+        public static final int issuesHeading=0x7f050034;
+        public static final int jithu=0x7f05002e;
+        public static final int jithuWork=0x7f05002f;
+        public static final int praveen=0x7f050030;
+        public static final int praveenWork=0x7f050031;
+        public static final int sampath=0x7f05002c;
+        public static final int sampathWork=0x7f05002d;
         public static final int statusMessage=0x7f050017;
         /**  credits 
          */
-        public static final int sudheer=0x7f050028;
-        public static final int sudheerWork=0x7f050029;
+        public static final int sudheer=0x7f05002a;
+        public static final int sudheerWork=0x7f05002b;
         public static final int title_activity_main=0x7f050012;
-        public static final int version=0x7f050031;
+        public static final int version=0x7f050033;
         /**  V1.0 Alpha 
          */
-        public static final int version1_0Heading=0x7f050026;
-        public static final int version1_0Log=0x7f050027;
+        public static final int version1_0Heading=0x7f050028;
+        public static final int version1_0Log=0x7f050029;
         /**  V2.0 Beta 
          */
-        public static final int version2_0Heading=0x7f050024;
-        public static final int version2_0Log=0x7f050025;
+        public static final int version2_0Heading=0x7f050026;
+        public static final int version2_0Log=0x7f050027;
         /**  V2.1 Beta 
          */
-        public static final int version2_1Heading=0x7f050022;
-        public static final int version2_1Log=0x7f050023;
+        public static final int version2_1Heading=0x7f050024;
+        public static final int version2_1Log=0x7f050025;
         /**  V3.0 RP 
          */
-        public static final int version3_0Heading=0x7f050020;
-        public static final int version3_0Log=0x7f050021;
+        public static final int version3_0Heading=0x7f050022;
+        public static final int version3_0Log=0x7f050023;
         /**  V3.1 RP 
          */
-        public static final int version3_1Heading=0x7f05001e;
-        public static final int version3_1Log=0x7f05001f;
+        public static final int version3_1Heading=0x7f050020;
+        public static final int version3_1Log=0x7f050021;
         /**  V3.2 RP 
          */
-        public static final int version3_2Heading=0x7f05001c;
-        public static final int version3_2Log=0x7f05001d;
+        public static final int version3_2Heading=0x7f05001e;
+        public static final int version3_2Log=0x7f05001f;
         /**  V3.3 RP 
          */
-        public static final int version3_3Heading=0x7f05001a;
-        public static final int version3_3Log=0x7f05001b;
+        public static final int version3_3Heading=0x7f05001c;
+        public static final int version3_3Log=0x7f05001d;
+        /**  V3.4 RP 
+         */
+        public static final int version3_4Heading=0x7f05001a;
+        public static final int version3_4Log=0x7f05001b;
         /**  Change log 
  V3.4 RP 
          */
-        public static final int version3_4Heading=0x7f050018;
-        public static final int version3_4Log=0x7f050019;
+        public static final int version3_5Heading=0x7f050018;
+        public static final int version3_5Log=0x7f050019;
     }
     public static final class style {
         /** 

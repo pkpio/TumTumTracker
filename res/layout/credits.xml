@@ -9,6 +9,34 @@
         android:orientation="vertical"
         android:padding="10dp" >
 
+        <!-- praveen -->
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/praveen"
+            android:textColor="@color/ICSblue"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:contentDescription="@string/praveen"
+            android:src="@drawable/praveen" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:autoLink="all"
+            android:gravity="center_horizontal"
+            android:paddingBottom="10dp"
+            android:text="@string/praveenWork"
+            android:textColor="@color/black" />
+
         <!-- Sudheer -->
 
         <TextView
@@ -91,34 +119,6 @@
             android:gravity="center_horizontal"
             android:paddingBottom="10dp"
             android:text="@string/jithuWork"
-            android:textColor="@color/black" />
-
-        <!-- praveen -->
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/praveen"
-            android:textColor="@color/ICSblue"
-            android:textSize="20sp" />
-
-        <ImageView
-            android:id="@+id/image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
-            android:contentDescription="@string/praveen"
-            android:src="@drawable/praveen" />
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:autoLink="all"
-            android:gravity="center_horizontal"
-            android:paddingBottom="10dp"
-            android:text="@string/praveenWork"
             android:textColor="@color/black" />
     </LinearLayout>
 

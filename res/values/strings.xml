@@ -9,6 +9,15 @@
     <string name="statusMessage">Updating..</string>
 
     <!-- Change log -->
+    
+    <!-- V3.4 RP -->
+    <string name="version3.4Heading">V3.4 Release preview</string>
+    <string name="version3.4Log">-Changes to map center and zoom levels to give a nice 3D view on load\n-Removed location permission which was added earlier for future work</string>
+    
+    <!-- V3.3 RP -->
+    <string name="version3.3Heading">V3.3 Release preview</string>
+    <string name="version3.3Log">-Support for Gingerbread (2.3.x) and Froyo (2.2.x)</string>
+    
     <!-- V3.2 RP -->
     <string name="version3.2Heading">V3.2 Release preview</string>
     <string name="version3.2Log">-Fixed NULL pointer exception causing FC on no internet connection\n-Added Help section\n-Added in-app Change log</string>

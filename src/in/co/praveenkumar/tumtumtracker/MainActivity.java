@@ -52,7 +52,7 @@ public class MainActivity extends FragmentActivity {
 
 	// Map variables
 	GoogleMap mMap;
-	private static final LatLng defaultCenter = new LatLng(19.134786, 72.914584);
+	private static final LatLng defaultCenter = new LatLng(19.131481, 72.915296);
 
 	// Other declarations
 	ProgressDialog firstTimeDialog;
@@ -68,7 +68,7 @@ public class MainActivity extends FragmentActivity {
 		// Setting up Camera params..center, zoom, tilt, bearing
 		CameraPosition cameraPosition = new CameraPosition.Builder()
 				.target(defaultCenter) // center map to IITB campus
-				.zoom(15) // zoom level 15
+				.zoom(17) // zoom level 15
 				.bearing(0) // orientation of the camera to north(default)
 				.tilt(60) // tilt of the camera to 60 degrees
 				.build(); // Create a CameraPosition from the builder

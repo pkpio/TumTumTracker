@@ -1,27 +1,39 @@
 TumTumTracker
 =============
+Android application to track the tumtums - internal transportation vehicles at IIT Bombay.
 
-© 2013, Praveen Kumar Pendyala. Licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported license, http://creativecommons.org/licenses/by-nc-sa/3.0/
 
-You may use this code, modify it to your own needs - Add/remove functionalities, squash few bugs, with a condition that a proper credit given to the original developer - Yeah that's me, Praveen Pendyala.
+Author
+----------------------
+Praveen Kumar Pendyala <<praveen@praveenkumar.co.in>><br>
+http://praveenkumar.co.in
 
-Though not compulsively required, it is expected that you inform the above mentioned original developer about the work you derived/deriving from this.
 
-Also, it is expected as matter of ethics that your work, if heavily dervied from this, is also made available publicly.
+License
+----------------------
+Licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 3.0 
+Unported license.
 
-And in any case, Where ever the original file(s) - one(s) contained in this thread is(are) modified it is mandatory to add the below lines.
+Read the complete license at,
+http://creativecommons.org/licenses/by-nc-sa/3.0/
 
-/************************************************************************************************
 
-© 2013, Praveen Kumar Pendyala. Licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported license, http://creativecommons.org/licenses/by-nc-sa/3.0/ Thank you.
+Developing upon TumTumTracker
+------------------------
+You need to obtain a local copy of the repository to start developing. TO do this,
 
-This work is derived from TumTumTracker, a work by Praveen Kumar Pendyala.
+* Fork this repository using the 'fork' icon at the top right and clone to your PC using 
+```git clone https://github.com/<your-git-username>/TumTumTracker.git```
+		
+		or
+		
+* Download a copy of the project as a zip
+ 
+After this proceed to the 'Importing to Eclipse' section
 
-Source code: https://github.com/praveendath92/TumTumTracker
 
-All further dervied versions of this code MUST also contain these lines.
-
-You may be allowed to modify this notice and/or licenseing with original author's consent.
-
-***************************************************************************************************/
-
+Import to Eclipse
+-------------------
+1. Import the project into eclipse.
+2. Import google-play-services_lib from ```/lib``` if not imported along in the previous step
+3. Download Google Play Services using the SDK manager. You will need this when the play-service in ```/libs``` didn't work

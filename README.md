@@ -2,21 +2,23 @@ TumTumTracker
 =============
 Android application to track the tumtums - internal transportation vehicles at IIT Bombay.
 
+<br/>
 
 Author
 ----------------------
-Praveen Kumar Pendyala <<praveen@praveenkumar.co.in>><br>
+Praveen Kumar Pendyala <<praveen@praveenkumar.co.in>><br/>
 http://praveenkumar.co.in
 
+<br/>
 
 License
 ----------------------
-Licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 3.0 
-Unported license.
+Licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported license.
 
 Read the complete license at,
 http://creativecommons.org/licenses/by-nc-sa/3.0/
 
+<br/>
 
 Developing upon TumTumTracker
 ------------------------
@@ -31,6 +33,7 @@ You need to obtain a local copy of the repository to start developing. TO do thi
  
 After this proceed to the 'Importing to Eclipse' section
 
+<br/>
 
 Import to Eclipse
 -------------------

@@ -11,16 +11,18 @@
     <uses-permission android:name="com.example.mapdemo.permission.MAPS_RECEIVE" />
     <!-- Copied from Google Maps Library/AndroidManifest.xml. -->
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="11"
         android:targetSdkVersion="17" />
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <!-- External storage for caching. -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-   
+
     <!-- My Location -->
-    <!-- For future work
+    <!--
+    For future work
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     -->
@@ -40,6 +42,12 @@
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyDc_3c55QKrv_Es9NgVd1N11eRP4mlDPRw" />
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="Api key" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
 
         <activity android:name=".MainActivity" >
             <intent-filter>

@@ -39,6 +39,7 @@ public class JSONParser {
 		// Making HTTP request
 		try {
 			// defaultHttpClient
+			AppsHttpClient ahc = new AppsHttpClient();
 			DefaultHttpClient httpClient = new DefaultHttpClient();
 			HttpPost httpPost = new HttpPost(url);
 

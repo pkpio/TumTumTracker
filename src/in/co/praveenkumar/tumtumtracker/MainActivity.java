@@ -37,8 +37,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MainActivity extends FragmentActivity {
 	// Settings
-	private static String url = "http://home.iitb.ac.in/~praveendath92/TTT/markers.json";
-	final int updateDelay = 1500; // In milliseconds
+	private static String url = "http://tumtum-iitb.org/json_data/";
+	final int updateDelay = 8000; // In milliseconds
 
 	// JSON Node names
 	private static final String TAG_MARKERS = "markers";

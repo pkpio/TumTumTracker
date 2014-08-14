@@ -9,19 +9,24 @@
     <string name="statusMessage">Updating..</string>
 
     <!-- Change log -->
-    
+
+
+    <!-- V3.6 RP -->
+    <string name="version3.6Heading">V3.6 Release preview</string>
+    <string name="version3.6Log">-Updated the data source which gives realtime locations\n-Refresh rate changes to 8 secs. </string>
+
     <!-- V3.5 RP -->
     <string name="version3.5Heading">V3.5 Release preview</string>
     <string name="version3.5Log">-Status update message now reflects actual status\n-Rearrangements in status update section</string>
-    
+
     <!-- V3.4 RP -->
     <string name="version3.4Heading">V3.4 Release preview</string>
     <string name="version3.4Log">-Changes to map center and zoom levels to give a nice 3D view on load\n-Removed location permission which was added earlier for future work</string>
-    
+
     <!-- V3.3 RP -->
     <string name="version3.3Heading">V3.3 Release preview</string>
     <string name="version3.3Log">-Support for Gingerbread (2.3.x) and Froyo (2.2.x)</string>
-    
+
     <!-- V3.2 RP -->
     <string name="version3.2Heading">V3.2 Release preview</string>
     <string name="version3.2Log">-Fixed NULL pointer exception causing FC on no internet connection\n-Added Help section\n-Added in-app Change log</string>
@@ -68,9 +73,9 @@
     <string name="help_last_updated">Last updated</string>
     <string name="help_last_updated_markers">Time stamp, accurate to seconds, of the last successful hit of markers info fetching from web server</string>
     <string name="help_last_updated_marker">Time stamp, accurate to seconds, of the last successful update of that particular TumTum\'s location to web server</string>
-	<string name="help_other_info">Other info</string>
-	<string name="help_markers_update_info">Currently, the app re-fetches markers info from the web server, 1500 ms after the last hit/fail fetch request. You may see an option to set this refresh time manually in the subsequent versions.</string>
+    <string name="help_other_info">Other info</string>
+    <string name="help_markers_update_info">Currently, the app re-fetches markers info from the web server, 1500 ms after the last hit/fail fetch request. You may see an option to set this refresh time manually in the subsequent versions.</string>
     <string name="help_notice">Note</string>
     <string name="help_notice_text">I have put in a lot of time to build this app and keep everything clear to the end-user. If you find something is erroneous or missing. Please bring it to my notice. Send in your suggestions, comments and constructive criticism to praveendath92@gmail.com\n\n </string>
-    
+
 </resources>

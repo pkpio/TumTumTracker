@@ -49,10 +49,13 @@
             </intent-filter>
         </activity>
 
+        
+        <!-- Debug key: AIzaSyCzYScLkB8PiBCDhhoz6cCsi14dNiCy0Go -->
+        <!-- Publish key: AIzaSyDc_3c55QKrv_Es9NgVd1N11eRP4mlDPRw -->
         <!-- Google Maps Android API V2 key -->
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyDc_3c55QKrv_Es9NgVd1N11eRP4mlDPRw" />
+            android:value="AIzaSyCzYScLkB8PiBCDhhoz6cCsi14dNiCy0Go" />
     </application>
 
 </manifest>

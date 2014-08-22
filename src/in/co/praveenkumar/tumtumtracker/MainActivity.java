@@ -3,6 +3,8 @@ package in.co.praveenkumar.tumtumtracker;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map.Entry;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -36,7 +38,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MainActivity extends FragmentActivity implements OnMarkerClickListener{
+public class MainActivity extends FragmentActivity {
 	// Settings
 	private static String url = "http://tumtum-iitb.org/ttt_data/";
 	final int updateDelay = 3000; // In milliseconds
@@ -48,6 +50,7 @@ public class MainActivity extends FragmentActivity implements OnMarkerClickListe
 	private static final String TAG_DESCRIPTION = "description";
 	private static final String TAG_LAST_UPDATED = "lastupdated";
 	private static final String TAG_TYPE = "type";
+	private static final String TAG_ID = "id";
 
 	// JSON variables
 	JSONArray markers = null;
@@ -61,6 +64,10 @@ public class MainActivity extends FragmentActivity implements OnMarkerClickListe
 	ProgressDialog firstTimeDialog;
 	Marker mapMarkers[] = null;
 	Boolean updateLastUpdated = false;
+
+	// Last window open detection
+	HashMap<Integer, String> hashMap = new HashMap<Integer, String>();
+	Integer lastOpenWindowsId = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -139,45 +146,62 @@ public class MainActivity extends FragmentActivity implements OnMarkerClickListe
 					JSONObject c = markers.getJSONObject(i);
 
 					// Storing each json item in variable
-					// String id = c.getString(TAG_ID);
+					int id = c.getInt(TAG_ID);
 					double lat = c.getDouble(TAG_LAT);
 					double lng = c.getDouble(TAG_LNG);
 					String description = c.getString(TAG_DESCRIPTION);
 					String lastupdated = c.getString(TAG_LAST_UPDATED);
 					int type = c.getInt(TAG_TYPE);
+					Marker marker;
 
 					switch (type) {
 					case 1:
-						mMap.addMarker(new MarkerOptions()
+						marker = mMap.addMarker(new MarkerOptions()
 								.position(new LatLng(lat, lng))
 								.title(description)
 								.snippet("Last updated : " + lastupdated)
 								.icon(BitmapDescriptorFactory
 										.fromResource(R.drawable.bus_blue)));
+						if (id == lastOpenWindowsId)
+							marker.showInfoWindow();
+						hashMap.put(id, marker.getId());
+
 						break;
 					case 2:
-						mMap.addMarker(new MarkerOptions()
+						marker = mMap.addMarker(new MarkerOptions()
 								.position(new LatLng(lat, lng))
 								.title(description)
 								.snippet("Last updated : " + lastupdated)
 								.icon(BitmapDescriptorFactory
 										.fromResource(R.drawable.bus_green)));
+						if (id == lastOpenWindowsId)
+							marker.showInfoWindow();
+						hashMap.put(id, marker.getId());
+
 						break;
 					case 3:
-						mMap.addMarker(new MarkerOptions()
+						marker = mMap.addMarker(new MarkerOptions()
 								.position(new LatLng(lat, lng))
 								.title(description)
 								.snippet("Last updated : " + lastupdated)
 								.icon(BitmapDescriptorFactory
 										.fromResource(R.drawable.bus_red)));
+						if (id == lastOpenWindowsId)
+							marker.showInfoWindow();
+						hashMap.put(id, marker.getId());
+
 						break;
 					case 4:
-						mMap.addMarker(new MarkerOptions()
+						marker = mMap.addMarker(new MarkerOptions()
 								.position(new LatLng(lat, lng))
 								.title(description)
 								.snippet("Last updated : " + lastupdated)
 								.icon(BitmapDescriptorFactory
 										.fromResource(R.drawable.bus_yellow)));
+						if (id == lastOpenWindowsId)
+							marker.showInfoWindow();
+						hashMap.put(id, marker.getId());
+
 						break;
 					// Arbitrarily chosen type = 10 for bus stops
 					case 10:
@@ -188,12 +212,16 @@ public class MainActivity extends FragmentActivity implements OnMarkerClickListe
 										.fromResource(R.drawable.bus_stop)));
 						break;
 					default:
-						mMap.addMarker(new MarkerOptions()
+						marker = mMap.addMarker(new MarkerOptions()
 								.position(new LatLng(lat, lng))
 								.title(description)
 								.snippet("Last updated : " + lastupdated)
 								.icon(BitmapDescriptorFactory
 										.fromResource(R.drawable.bus_brown)));
+						if (id == lastOpenWindowsId)
+							marker.showInfoWindow();
+						hashMap.put(id, marker.getId());
+
 						break;
 
 					}
@@ -364,6 +392,7 @@ public class MainActivity extends FragmentActivity implements OnMarkerClickListe
 			// Check if we were successful in obtaining the map.
 			if (mMap != null) {
 				// The Map is verified. It is now safe to manipulate the map.
+				mMap.setOnMarkerClickListener(ttClickListener);
 
 			}
 		}
@@ -382,7 +411,6 @@ public class MainActivity extends FragmentActivity implements OnMarkerClickListe
 				pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
 				appVersion = pInfo.versionName;
 			} catch (NameNotFoundException e) {
-				// TODO Auto-generated catch block
 				Toast.makeText(getBaseContext(), "unable get app version",
 						Toast.LENGTH_SHORT).show();
 				e.printStackTrace();
@@ -412,10 +440,23 @@ public class MainActivity extends FragmentActivity implements OnMarkerClickListe
 		return dialog;
 	}
 
-	@Override
-	public boolean onMarkerClick(Marker marker) {
-		Log.d("Testing", "Info window clicked");
-		return false;
+	OnMarkerClickListener ttClickListener = new OnMarkerClickListener() {
+
+		@Override
+		public boolean onMarkerClick(Marker marker) {
+			lastOpenWindowsId = getKeyByValue(marker.getId());
+			Log.d("Testing", "Marker clicked: " + lastOpenWindowsId);
+			return false;
+		}
+	};
+
+	public Integer getKeyByValue(String value) {
+		for (Entry<Integer, String> entry : hashMap.entrySet()) {
+			if (value.equals(entry.getValue())) {
+				return entry.getKey();
+			}
+		}
+		return null;
 	}
 
 }

@@ -30,6 +30,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMap.OnMapClickListener;
 import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
@@ -392,8 +393,8 @@ public class MainActivity extends FragmentActivity {
 			// Check if we were successful in obtaining the map.
 			if (mMap != null) {
 				// The Map is verified. It is now safe to manipulate the map.
+				mMap.setOnMapClickListener(mapClickListener);
 				mMap.setOnMarkerClickListener(ttClickListener);
-
 			}
 		}
 	}
@@ -445,8 +446,16 @@ public class MainActivity extends FragmentActivity {
 		@Override
 		public boolean onMarkerClick(Marker marker) {
 			lastOpenWindowsId = getKeyByValue(marker.getId());
-			Log.d("Testing", "Marker clicked: " + lastOpenWindowsId);
 			return false;
+		}
+	};
+
+	OnMapClickListener mapClickListener = new OnMapClickListener() {
+
+		@Override
+		public void onMapClick(LatLng arg0) {
+			// Reset last open window
+			lastOpenWindowsId = 0;
 		}
 	};
 

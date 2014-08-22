@@ -13,7 +13,7 @@
 
     <!-- V3.6 RP -->
     <string name="version3.6Heading">V3.6 Release preview</string>
-    <string name="version3.6Log">-Updated the data source which gives realtime locations\n-Refresh rate changes to 8 secs. </string>
+    <string name="version3.6Log">-Updated the data source which gives realtime locations\n-Refresh rate changes to 8 secs.\n-Bus icons updated </string>
 
     <!-- V3.5 RP -->
     <string name="version3.5Heading">V3.5 Release preview</string>

@@ -28,6 +28,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
@@ -35,10 +36,10 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends FragmentActivity implements OnMarkerClickListener{
 	// Settings
-	private static String url = "http://tumtum-iitb.org/json_data/";
-	final int updateDelay = 8000; // In milliseconds
+	private static String url = "http://tumtum-iitb.org/ttt_data/";
+	final int updateDelay = 3000; // In milliseconds
 
 	// JSON Node names
 	private static final String TAG_MARKERS = "markers";
@@ -152,7 +153,7 @@ public class MainActivity extends FragmentActivity {
 								.title(description)
 								.snippet("Last updated : " + lastupdated)
 								.icon(BitmapDescriptorFactory
-										.fromResource(R.drawable.androidmarker_blue)));
+										.fromResource(R.drawable.bus_blue)));
 						break;
 					case 2:
 						mMap.addMarker(new MarkerOptions()
@@ -160,7 +161,7 @@ public class MainActivity extends FragmentActivity {
 								.title(description)
 								.snippet("Last updated : " + lastupdated)
 								.icon(BitmapDescriptorFactory
-										.fromResource(R.drawable.androidmarker_green)));
+										.fromResource(R.drawable.bus_green)));
 						break;
 					case 3:
 						mMap.addMarker(new MarkerOptions()
@@ -168,7 +169,7 @@ public class MainActivity extends FragmentActivity {
 								.title(description)
 								.snippet("Last updated : " + lastupdated)
 								.icon(BitmapDescriptorFactory
-										.fromResource(R.drawable.androidmarker_red)));
+										.fromResource(R.drawable.bus_red)));
 						break;
 					case 4:
 						mMap.addMarker(new MarkerOptions()
@@ -176,7 +177,7 @@ public class MainActivity extends FragmentActivity {
 								.title(description)
 								.snippet("Last updated : " + lastupdated)
 								.icon(BitmapDescriptorFactory
-										.fromResource(R.drawable.androidmarker_yellow)));
+										.fromResource(R.drawable.bus_yellow)));
 						break;
 					// Arbitrarily chosen type = 10 for bus stops
 					case 10:
@@ -192,7 +193,7 @@ public class MainActivity extends FragmentActivity {
 								.title(description)
 								.snippet("Last updated : " + lastupdated)
 								.icon(BitmapDescriptorFactory
-										.fromResource(R.drawable.androidmarker_black)));
+										.fromResource(R.drawable.bus_brown)));
 						break;
 
 					}
@@ -409,6 +410,12 @@ public class MainActivity extends FragmentActivity {
 			break;
 		}
 		return dialog;
+	}
+
+	@Override
+	public boolean onMarkerClick(Marker marker) {
+		Log.d("Testing", "Info window clicked");
+		return false;
 	}
 
 }

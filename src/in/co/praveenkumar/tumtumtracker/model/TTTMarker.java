@@ -9,7 +9,7 @@ import com.orm.SugarRecord;
  * @author Praveen Kumar Pendyala (praveen@praveenkumar.co.in)
  * 
  */
-public class Marker extends SugarRecord<Marker> {
+public class TTTMarker extends SugarRecord<TTTMarker> {
 
 	// since id is a reserved field in SugarRecord
 	@SerializedName("id")

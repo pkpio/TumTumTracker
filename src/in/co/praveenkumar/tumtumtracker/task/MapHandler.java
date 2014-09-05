@@ -6,20 +6,31 @@ import in.co.praveenkumar.tumtumtracker.helper.Param;
 import in.co.praveenkumar.tumtumtracker.helper.Session;
 import in.co.praveenkumar.tumtumtracker.model.TTTMarker;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map.Entry;
 
+import android.annotation.SuppressLint;
 import android.support.v4.app.FragmentManager;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.GoogleMap.OnMapClickListener;
+import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+@SuppressLint("UseSparseArrays")
 public class MapHandler {
 	FragmentManager mFragmentManager;
 	GoogleMap mMap;
+
+	// Last open windows detection
+	HashMap<Integer, String> hashMap = new HashMap<Integer, String>();
+	Integer lastOpenWindowsId = 0;
 
 	public MapHandler(FragmentManager mFragmentManager) {
 		this.mFragmentManager = mFragmentManager;
@@ -27,7 +38,7 @@ public class MapHandler {
 	}
 
 	/**
-	 * Overlay current markers
+	 * Overlay current markers. This will clear all old markers.
 	 */
 	public void overlayMarkers() {
 		if (Session.response == null)
@@ -35,14 +46,18 @@ public class MapHandler {
 				return;
 		List<TTTMarker> mMarkers = Session.response.getMarkers();
 		TTTMarker mark;
+		Marker marker;
 		mMap.clear();
 		for (int i = 0; i < mMarkers.size(); i++) {
 			mark = mMarkers.get(i);
-			mMap.addMarker(new MarkerOptions()
+			marker = mMap.addMarker(new MarkerOptions()
 					.position(new LatLng(mark.getLat(), mark.getLng()))
 					.title(mark.getDescription())
 					.snippet(mark.getLastupdated())
 					.icon(MapHelper.MarkerIcon(mark.getType())));
+			if (mark.getMarkerid() == lastOpenWindowsId)
+				marker.showInfoWindow();
+			hashMap.put(mark.getMarkerid(), marker.getId());
 		}
 	}
 
@@ -55,8 +70,8 @@ public class MapHandler {
 			// Check if we were successful in obtaining the map.
 			if (mMap != null) {
 				// The Map is verified. It is now safe to manipulate the map.
-				// mMap.setOnMapClickListener(mapClickListener);
-				// mMap.setOnMarkerClickListener(ttClickListener);
+				mMap.setOnMapClickListener(mapClickListener);
+				mMap.setOnMarkerClickListener(ttClickListener);
 			} else
 				return;
 		}
@@ -80,5 +95,32 @@ public class MapHandler {
 		mMap.animateCamera(CameraUpdateFactory
 				.newCameraPosition(cameraPosition));
 
+	}
+
+	OnMarkerClickListener ttClickListener = new OnMarkerClickListener() {
+
+		@Override
+		public boolean onMarkerClick(Marker marker) {
+			lastOpenWindowsId = getKeyByValue(marker.getId());
+			return false;
+		}
+	};
+
+	OnMapClickListener mapClickListener = new OnMapClickListener() {
+
+		@Override
+		public void onMapClick(LatLng arg0) {
+			// Reset last open window
+			lastOpenWindowsId = 0;
+		}
+	};
+
+	public Integer getKeyByValue(String value) {
+		for (Entry<Integer, String> entry : hashMap.entrySet()) {
+			if (value.equals(entry.getValue())) {
+				return entry.getKey();
+			}
+		}
+		return null;
 	}
 }

@@ -1,16 +1,17 @@
-package in.co.praveenkumar.tumtumtracker;
+package in.co.praveenkumar.tumtumtracker.activity;
 
+import in.co.praveenkumar.tumtumtracker.R;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends ActionBarActivity {
+public class TrackerActivity extends ActionBarActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_tracker);
 	}
 
 	@Override

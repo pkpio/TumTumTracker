@@ -4,6 +4,7 @@ import in.co.praveenkumar.tumtumtracker.R;
 import in.co.praveenkumar.tumtumtracker.adapter.NavigationDrawer;
 import in.co.praveenkumar.tumtumtracker.helper.Param;
 import in.co.praveenkumar.tumtumtracker.task.MapHandler;
+import in.co.praveenkumar.tumtumtracker.task.MarkerSync;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -17,6 +18,8 @@ public class TrackerActivity extends NavigationDrawer {
 		setContentView(R.layout.activity_tracker);
 		setUpDrawer();
 		mapHandler = new MapHandler(getSupportFragmentManager());
+		mapHandler.overlayMarkers();
+		new AsyncMarkerSync().execute("");
 	}
 
 	/**
@@ -28,8 +31,8 @@ public class TrackerActivity extends NavigationDrawer {
 
 		@Override
 		protected Boolean doInBackground(String... url) {
-
-			return null;
+			MarkerSync ms = new MarkerSync();
+			return ms.syncMarkers();
 		}
 
 		@Override

@@ -1,6 +1,6 @@
 package in.co.praveenkumar.tumtumtracker.model;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
 import com.orm.SugarRecord;
@@ -19,7 +19,7 @@ public class TTTSiteResponse extends SugarRecord<TTTSiteResponse> {
 	TTTMarker center;
 
 	@SerializedName("markers")
-	ArrayList<TTTMarker> markers;
+	List<TTTMarker> markers;
 
 	@SerializedName("title")
 	String title;
@@ -48,7 +48,7 @@ public class TTTSiteResponse extends SugarRecord<TTTSiteResponse> {
 	 * 
 	 * @return markers
 	 */
-	public ArrayList<TTTMarker> getMarkers() {
+	public List<TTTMarker> getMarkers() {
 		return markers;
 	}
 
@@ -59,5 +59,13 @@ public class TTTSiteResponse extends SugarRecord<TTTSiteResponse> {
 	 */
 	public String getTitle() {
 		return title;
+	}
+
+	/**
+	 * Set list of markers
+	 * 
+	 */
+	public void setMarkers(List<TTTMarker> markers) {
+		this.markers = markers;
 	}
 }

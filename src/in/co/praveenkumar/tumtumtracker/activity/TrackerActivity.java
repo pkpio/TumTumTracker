@@ -1,35 +1,36 @@
 package in.co.praveenkumar.tumtumtracker.activity;
 
 import in.co.praveenkumar.tumtumtracker.R;
-import android.support.v7.app.ActionBarActivity;
+import in.co.praveenkumar.tumtumtracker.adapter.NavigationDrawer;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 
-public class TrackerActivity extends ActionBarActivity {
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.SupportMapFragment;
+
+public class TrackerActivity extends NavigationDrawer {
+	GoogleMap mMap;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tracker);
+		setUpDrawer();
+		setUpMapIfNeeded();
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
+	private void setUpMapIfNeeded() {
+		// Do a null check to confirm that we have not already instantiated map
+		if (mMap == null) {
+			mMap = ((SupportMapFragment) getSupportFragmentManager()
+					.findFragmentById(R.id.map)).getMap();
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
+			// Check if we were successful in obtaining the map.
+			if (mMap != null) {
+				// The Map is verified. It is now safe to manipulate the map.
+				// mMap.setOnMapClickListener(mapClickListener);
+				// mMap.setOnMarkerClickListener(ttClickListener);
+			}
 		}
-		return super.onOptionsItemSelected(item);
 	}
+
 }

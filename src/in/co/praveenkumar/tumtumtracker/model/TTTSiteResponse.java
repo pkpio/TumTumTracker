@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
 import com.orm.SugarRecord;
+import com.orm.dsl.Ignore;
 
 /**
  * TTT site data response object
@@ -18,6 +19,7 @@ public class TTTSiteResponse extends SugarRecord<TTTSiteResponse> {
 	@SerializedName("center")
 	TTTMarker center;
 
+	@Ignore
 	@SerializedName("markers")
 	List<TTTMarker> markers;
 

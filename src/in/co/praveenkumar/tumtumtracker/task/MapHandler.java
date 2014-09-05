@@ -1,18 +1,21 @@
 package in.co.praveenkumar.tumtumtracker.task;
 
-import java.util.List;
-
 import in.co.praveenkumar.tumtumtracker.R;
 import in.co.praveenkumar.tumtumtracker.helper.Param;
 import in.co.praveenkumar.tumtumtracker.helper.Session;
 import in.co.praveenkumar.tumtumtracker.model.TTTMarker;
+
+import java.util.List;
+
 import android.support.v4.app.FragmentManager;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapHandler {
 	FragmentManager mFragmentManager;
@@ -31,6 +34,13 @@ public class MapHandler {
 			if (!Session.init())
 				return;
 		List<TTTMarker> mMarkers = Session.response.getMarkers();
+		mMap.addMarker(new MarkerOptions()
+				.position(
+						new LatLng(mMarkers.get(0).getLat(), mMarkers.get(0)
+								.getLng()))
+				.title(mMarkers.get(0).getDescription())
+				.snippet(mMarkers.get(0).getLastupdated())
+				.icon(BitmapDescriptorFactory.fromResource(R.drawable.bus_blue)));
 	}
 
 	private void setUpMapIfNeeded() {

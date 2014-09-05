@@ -1,81 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Tum Tum Tracker</string>
-    <string name="title_activity_main">Tum Tum Tracker</string>
-    <string name="credits">Credits</string>
-    <string name="about">About</string>
-    <string name="help">Help</string>
-    <string name="changelog">Change log</string>
-    <string name="statusMessage">Updating..</string>
-
-    <!-- Change log -->
-
-
-    <!-- V3.6 RP -->
-    <string name="version3.6Heading">V3.6 Release preview</string>
-    <string name="version3.6Log">-Updated the data source which gives realtime locations\n-Refresh rate changes to 8 secs.\n-Bus icons updated </string>
-
-    <!-- V3.5 RP -->
-    <string name="version3.5Heading">V3.5 Release preview</string>
-    <string name="version3.5Log">-Status update message now reflects actual status\n-Rearrangements in status update section</string>
-
-    <!-- V3.4 RP -->
-    <string name="version3.4Heading">V3.4 Release preview</string>
-    <string name="version3.4Log">-Changes to map center and zoom levels to give a nice 3D view on load\n-Removed location permission which was added earlier for future work</string>
-
-    <!-- V3.3 RP -->
-    <string name="version3.3Heading">V3.3 Release preview</string>
-    <string name="version3.3Log">-Support for Gingerbread (2.3.x) and Froyo (2.2.x)</string>
-
-    <!-- V3.2 RP -->
-    <string name="version3.2Heading">V3.2 Release preview</string>
-    <string name="version3.2Log">-Fixed NULL pointer exception causing FC on no internet connection\n-Added Help section\n-Added in-app Change log</string>
-    <!-- V3.1 RP -->
-    <string name="version3.1Heading">V3.1 Release preview</string>
-    <string name="version3.1Log">-Fixed Map not loading issue caused due to usage of wrong API key (Earlier, I used API V1 key instead of V2)</string>
-    <!-- V3.0 RP -->
-    <string name="version3.0Heading">V3.0 Release preview</string>
-    <string name="version3.0Log">-Totally rewrote the app using GMM V2 dumping V1 used in earlier versions\n-Popups of marker info are now attached to the marker\n-Update frequency to 1500ms instead of the available maximum speed in earlier releases</string>
-    <!-- V2.1 Beta -->
-    <string name="version2.1Heading">V2.1 Beta</string>
-    <string name="version2.1Log">-Minor changes to menus</string>
-    <!-- V2.0 Beta -->
-    <string name="version2.0Heading">V2.0 Beta</string>
-    <string name="version2.0Log">-Auto refresh at maximum possible speed\n-Migrated to latest SDK version</string>
-    <!-- V1.0 Alpha -->
-    <string name="version1.0Heading">V1.0 Alpha</string>
-    <string name="version1.0Log">-Development version</string>
-
-    <!-- credits -->
-    <string name="sudheer">Sudheer Katta</string>
-    <string name="sudheerWork">Electronics development and testing</string>
-    <string name="sampath">Sampath Satti</string>
-    <string name="sampathWork">Electronics development and testing</string>
-    <string name="jithu">Jithendar Anumula</string>
-    <string name="jithuWork">Electronics development and testing</string>
-    <string name="praveen">Praveen Kumar Pendyala</string>
-    <string name="praveenWork">Website and Android application</string>
-
-    <!-- About -->
-    <string name="aboutTTT">TumTumTracker, shortly TTT, is a project still in the development stages. On successful completion it will be able to help you track TumTum using either the Web or Android application and also a board displayed each bus stop</string>
-    <string name="version">Version : </string>
-    <string name="issuesHeading">Known issues</string>
-    <string name="issues">-Writing NULL to offline markers backup when opened without internet connection, causing \'Loading for first time\' dialog on next use (even if its not the first time)\n\nPlease bear with the issues. I\'m hoping to fix all of these, soon before the project goes live.\n\n</string>
-
-    <!-- Help -->
-    <string name="help_marker_colors">Marker colors</string>
-    <string name="help_blue_marker">   ---------    Hill side route</string>
-    <string name="help_green_marker">   ---------    Lake side route</string>
-    <string name="help_red_marker">   ---------    Hostels side route</string>
-    <string name="help_yellow_marker">   ---------    Main gate</string>
-    <string name="help_black_marker">   ---------    Default/Not available</string>
-    <string name="help_bus_stop">     ---------    Bus stop </string>
-    <string name="help_last_updated">Last updated</string>
-    <string name="help_last_updated_markers">Time stamp, accurate to seconds, of the last successful hit of markers info fetching from web server</string>
-    <string name="help_last_updated_marker">Time stamp, accurate to seconds, of the last successful update of that particular TumTum\'s location to web server</string>
-    <string name="help_other_info">Other info</string>
-    <string name="help_markers_update_info">Currently, the app re-fetches markers info from the web server, 1500 ms after the last hit/fail fetch request. You may see an option to set this refresh time manually in the subsequent versions.</string>
-    <string name="help_notice">Note</string>
-    <string name="help_notice_text">I have put in a lot of time to build this app and keep everything clear to the end-user. If you find something is erroneous or missing. Please bring it to my notice. Send in your suggestions, comments and constructive criticism to praveendath92@gmail.com\n\n </string>
+    <string name="app_name">TumTumTracker</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
 
 </resources>

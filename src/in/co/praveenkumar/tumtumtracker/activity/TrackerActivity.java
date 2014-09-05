@@ -37,6 +37,8 @@ public class TrackerActivity extends NavigationDrawer {
 
 		@Override
 		protected void onPostExecute(Boolean syncStatus) {
+			if (syncStatus)
+				mapHandler.overlayMarkers();
 			// Start next update after some wait.
 			Handler myHandler = new Handler();
 			myHandler.postDelayed(syncLooper, Param.frequency);

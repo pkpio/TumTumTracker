@@ -1,5 +1,8 @@
-package in.co.praveenkumar.tumtumtracker.helper;
+package in.co.praveenkumar.tumtumtracker.task;
 
+import in.co.praveenkumar.tumtumtracker.helper.GsonExclude;
+import in.co.praveenkumar.tumtumtracker.helper.Param;
+import in.co.praveenkumar.tumtumtracker.helper.Session;
 import in.co.praveenkumar.tumtumtracker.model.TTTSiteResponse;
 
 import java.io.InputStreamReader;
@@ -11,6 +14,7 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
 
 /**
  * Sync the local marker data with the TTT site
@@ -58,3 +62,4 @@ public class MarkerSync {
 		return true;
 	}
 }
+

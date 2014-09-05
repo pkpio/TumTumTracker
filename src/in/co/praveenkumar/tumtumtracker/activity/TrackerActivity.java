@@ -2,35 +2,53 @@ package in.co.praveenkumar.tumtumtracker.activity;
 
 import in.co.praveenkumar.tumtumtracker.R;
 import in.co.praveenkumar.tumtumtracker.adapter.NavigationDrawer;
+import in.co.praveenkumar.tumtumtracker.helper.Param;
+import in.co.praveenkumar.tumtumtracker.task.MapHandler;
+import android.os.AsyncTask;
 import android.os.Bundle;
-
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.SupportMapFragment;
+import android.os.Handler;
 
 public class TrackerActivity extends NavigationDrawer {
-	GoogleMap mMap;
+	MapHandler mapHandler;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tracker);
 		setUpDrawer();
-		setUpMapIfNeeded();
+		mapHandler = new MapHandler(getSupportFragmentManager());
 	}
 
-	private void setUpMapIfNeeded() {
-		// Do a null check to confirm that we have not already instantiated map
-		if (mMap == null) {
-			mMap = ((SupportMapFragment) getSupportFragmentManager()
-					.findFragmentById(R.id.map)).getMap();
+	/**
+	 * Network sync thread
+	 * 
+	 * @author Praveen Kumar Pendyala (praveen@praveenkumar.co.in)
+	 */
+	private class AsyncMarkerSync extends AsyncTask<String, Integer, Boolean> {
 
-			// Check if we were successful in obtaining the map.
-			if (mMap != null) {
-				// The Map is verified. It is now safe to manipulate the map.
-				// mMap.setOnMapClickListener(mapClickListener);
-				// mMap.setOnMarkerClickListener(ttClickListener);
-			}
+		@Override
+		protected Boolean doInBackground(String... url) {
+
+			return null;
 		}
+
+		@Override
+		protected void onPostExecute(Boolean syncStatus) {
+			// Start next update after some wait.
+			Handler myHandler = new Handler();
+			myHandler.postDelayed(syncLooper, Param.frequency);
+		}
+
 	}
+
+	/**
+	 * A runnable to support looping sync task.
+	 */
+	private Runnable syncLooper = new Runnable() {
+		@Override
+		public void run() {
+			new AsyncMarkerSync().execute("");
+		}
+	};
 
 }

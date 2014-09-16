@@ -35,4 +35,8 @@ public class Param {
 	 */
 	public static final int tilt = 60;
 
+	// Just for testing
+	public static final LatLng test = new LatLng(19.133481, 72.915296);
+	public static final LatLng test2 = new LatLng(19.134481, 72.915296);
+
 }

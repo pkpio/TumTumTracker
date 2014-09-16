@@ -7,6 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+/**
+ * -TODO-
+ * Remove this fragment and simply add this as listview in Navigation drawer adapter
+ * @author praveen
+ *
+ */
 public class LeftNavigationFragment extends Fragment {
 
 	@Override

@@ -1,0 +1,49 @@
+{
+    "title": "TumTumTracker route data",
+    "license": "© Praveen Kumar Pendyala. Licensed under CC BY-NC-SA 3.0",
+    "routes": [
+        {
+            "id": 1,
+            "title": "3A",
+            "description": "H13-Main gate",
+            "color": 3,
+            "overviewpolylines": [
+                {
+                    "line": "covsBqm`|L@@e@Ro@V_A\\]Ne@P{Bp@{@Ni@D_AB_@?}AEq@AmA?wIF_@Bm@Ja@Ne@NmAp@]X]n@MZWdAMl@"
+                },
+                {
+                    "line": "g|wsB{}_|L}FnU"
+                },
+                {
+                    "line": "edxsBkg_|L}@jDa@~AYpAUz@]fBYhBYtCYzB"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "title": "3B",
+            "description": "Campus-H15-YP",
+            "color": 2,
+            "overviewpolylines": [
+                {
+                    "line": "covsBqm`|L@@e@Ro@V_A\\]Ne@P{Bp@{@Ni@D_AB_@?}AEq@AmA?wIF_@Bm@Ja@Ne@NmAp@]X]n@MZWdAMl@"
+                },
+                {
+                    "line": "g|wsB{}_|L}FnU"
+                },
+                {
+                    "line": "edxsBkg_|LqJoAPuDI_DBu@^qDByAMoBMw@"
+                },
+                {
+                    "line": "coxsB{c`|L_Dm@cCQ"
+                },
+                {
+                    "line": "gxxsB{e`|LmCwAQMIOCU@UJ_AH_@Ne@LYzAyBnB{B^Ul@G`JEZAJCDGFGFMFG^OzEFF@@B@BLhABBXF|Dc@JCFo@Cq@@OFQHMJKLGFAzJ[RA"
+                },
+                {
+                    "line": "ugwsBy~`|LThO@vA?Z?zA"
+                }
+            ]
+        }
+    ]
+}

@@ -6,12 +6,12 @@ public class Param {
 	/**
 	 * URL for feteching json data
 	 */
-	public static String dataUrl = "http://tumtum-iitb.org/ttt_data/";
+	public static final String dataUrl = "http://tumtum-iitb.org/ttt_data/";
 
 	/**
 	 * Data update frequency in milliseconds
 	 */
-	public static int frequency = 3000;
+	public static final int frequency = 3000;
 
 	/**
 	 * The sql db id of the site response field. We will be using only 1 column
@@ -34,9 +34,5 @@ public class Param {
 	 * Default map tilt value. Server may not send this value.
 	 */
 	public static final int tilt = 60;
-
-	// Just for testing
-	public static final LatLng test = new LatLng(19.133481, 72.915296);
-	public static final LatLng test2 = new LatLng(19.134481, 72.915296);
 
 }

@@ -6,12 +6,17 @@ public class Param {
 	/**
 	 * URL for fetching json data
 	 */
-	public static final String dataUrl = "http://tumtum-iitb.org/ttt_data/";
+	public static final String dataUrl = "http://tumtum-iitb.org/ttt_data";
 
 	/**
 	 * Data update frequency in milliseconds
 	 */
 	public static final int frequency = 3000;
+
+	/**
+	 * Wait time in milliseconds on last update failure
+	 */
+	public static final int failWait = 1500;
 
 	/**
 	 * The sql db id of the site response field. We will be using only 1 column

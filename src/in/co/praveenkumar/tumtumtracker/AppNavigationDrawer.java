@@ -1,6 +1,5 @@
 package in.co.praveenkumar.tumtumtracker;
 
-import in.co.praveenkumar.tumtumtracker.R;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;

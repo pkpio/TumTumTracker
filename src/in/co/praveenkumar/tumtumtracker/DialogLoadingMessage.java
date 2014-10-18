@@ -1,6 +1,5 @@
 package in.co.praveenkumar.tumtumtracker;
 
-import in.co.praveenkumar.tumtumtracker.R;
 import in.co.praveenkumar.tumtumtracker.helper.RandomMessage;
 import android.app.Dialog;
 import android.content.Context;

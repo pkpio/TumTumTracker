@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp" >
+
+    <TextView
+        android:id="@+id/list_route_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="3A Hostels"
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/list_route_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        android:text="Hostel 13 - Main building - Main gate"
+        android:textColor="@color/grey9"
+        android:textSize="14sp" />
+
+</LinearLayout>

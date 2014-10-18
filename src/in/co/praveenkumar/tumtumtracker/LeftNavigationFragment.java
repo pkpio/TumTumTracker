@@ -1,5 +1,6 @@
 package in.co.praveenkumar.tumtumtracker;
 
+import in.co.praveenkumar.tumtumtracker.AppInterface.RoutePlotter;
 import in.co.praveenkumar.tumtumtracker.helper.GsonExclude;
 import in.co.praveenkumar.tumtumtracker.model.TTTOverviewPoly;
 import in.co.praveenkumar.tumtumtracker.model.TTTRoute;
@@ -10,14 +11,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -34,6 +39,8 @@ import com.google.gson.GsonBuilder;
  * 
  */
 public class LeftNavigationFragment extends Fragment {
+	static final String DEBUG_TAG = "LeftNavigationFragment";
+	RoutePlotter mRoutePlotter;
 	ListView navListView;
 	LeftNavListAdapter navListAdapter;
 	Context context;
@@ -61,10 +68,36 @@ public class LeftNavigationFragment extends Fragment {
 		navListAdapter = new LeftNavListAdapter(context);
 		navListView.setAdapter(navListAdapter);
 
+		// Menu item select actions
+		navListView.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				switch (navListAdapter.getItemViewType(position)) {
+				case LeftNavListAdapter.TYPE_ROUTE:
+					mRoutePlotter.plotRoute(routes.get(position));
+					break;
+				case LeftNavListAdapter.TYPE_MENUITEM:
+					break;
+				}
+				// -TODO- Implement drawerStateInterface
+			}
+		});
+
 		// Get route data from sql db and also sync from server
 		new AsyncRouteSync().execute("");
 
 		return rootView;
+	}
+
+	@Override
+	public void onAttach(Activity activity) {
+		super.onAttach(activity);
+		try {
+			mRoutePlotter = (RoutePlotter) activity;
+		} catch (ClassCastException castException) {
+			Log.d(DEBUG_TAG, "The activity does not implement the listener");
+		}
 	}
 
 	private class AsyncRouteSync extends AsyncTask<String, Integer, Boolean> {

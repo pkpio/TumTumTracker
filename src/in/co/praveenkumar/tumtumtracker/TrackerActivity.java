@@ -14,10 +14,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.widget.Toast;
 
-public class ActivityTracker extends AppNavigationDrawer {
+public class TrackerActivity extends AppNavigationDrawer {
 	Context context;
 	MapHandler mapHandler;
-	DialogLoadingMessage loadMessage;
+	LoadingMessageDialog loadMessage;
 	int fails = 0;
 
 	@Override
@@ -26,7 +26,7 @@ public class ActivityTracker extends AppNavigationDrawer {
 		this.context = this;
 
 		// Loading message setup
-		loadMessage = new DialogLoadingMessage(this);
+		loadMessage = new LoadingMessageDialog(this);
 		loadMessage.show();
 
 		setContentView(R.layout.activity_tracker);

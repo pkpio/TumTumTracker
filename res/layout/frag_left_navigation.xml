@@ -6,7 +6,7 @@
     android:orientation="vertical" >
 
     <ListView
-        android:id="@+id/content_discussion"
+        android:id="@+id/left_nav_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:adjustViewBounds="true"

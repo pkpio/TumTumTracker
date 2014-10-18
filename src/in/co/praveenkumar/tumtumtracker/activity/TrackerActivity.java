@@ -2,6 +2,7 @@ package in.co.praveenkumar.tumtumtracker.activity;
 
 import in.co.praveenkumar.tumtumtracker.R;
 import in.co.praveenkumar.tumtumtracker.adapter.AppNavigationDrawer;
+import in.co.praveenkumar.tumtumtracker.dialog.LoadingMessage;
 import in.co.praveenkumar.tumtumtracker.helper.Param;
 import in.co.praveenkumar.tumtumtracker.task.MapHandler;
 import in.co.praveenkumar.tumtumtracker.task.MarkerSync;
@@ -11,14 +12,22 @@ import android.os.Handler;
 
 public class TrackerActivity extends AppNavigationDrawer {
 	MapHandler mapHandler;
+	LoadingMessage loadMessage;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tracker);
 		setUpDrawer();
+
+		// Loading message setup
+		loadMessage = new LoadingMessage(this);
+		loadMessage.show();
+
+		// MapHandler setup
 		mapHandler = new MapHandler(getSupportFragmentManager());
 		mapHandler.overlayMarkers();
+
 		new AsyncMarkerSync().execute("");
 	}
 
@@ -39,9 +48,12 @@ public class TrackerActivity extends AppNavigationDrawer {
 		protected void onPostExecute(Boolean syncStatus) {
 			if (syncStatus)
 				mapHandler.overlayMarkers();
+
 			// Start next update after some wait.
 			Handler myHandler = new Handler();
 			myHandler.postDelayed(syncLooper, Param.frequency);
+
+			loadMessage.dismiss();
 		}
 
 	}

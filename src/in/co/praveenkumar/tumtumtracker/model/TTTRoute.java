@@ -68,8 +68,22 @@ public class TTTRoute extends SugarRecord<TTTRoute> {
 		return color;
 	}
 
+	/**
+	 * Get list of overviewpoly lines.
+	 * 
+	 * @return overviewpolyline
+	 */
 	public List<TTTOverviewPoly> getOverviewpolylines() {
 		return overviewpolylines;
+	}
+
+	/**
+	 * Set list of overviewpoly lines.
+	 * 
+	 * @return overviewpolyline
+	 */
+	public void setOverviewpolylines(List<TTTOverviewPoly> overviewpolylines) {
+		this.overviewpolylines = overviewpolylines;
 	}
 
 }

@@ -1,4 +1,4 @@
-package in.co.praveenkumar.tumtumtracker.fragment;
+package in.co.praveenkumar.tumtumtracker;
 
 import in.co.praveenkumar.tumtumtracker.R;
 import in.co.praveenkumar.tumtumtracker.model.TTTRoute;
@@ -24,7 +24,7 @@ import android.widget.TextView;
  * @author praveen
  * 
  */
-public class LeftNavigationFragment extends Fragment {
+public class FragmentLeftNavigation extends Fragment {
 	ListView navListView;
 	LeftNavListAdapter navListAdapter;
 	Context context;

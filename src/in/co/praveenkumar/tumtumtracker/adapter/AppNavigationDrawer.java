@@ -9,7 +9,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.view.MenuItem;
 import android.view.View;
 
-public class NavigationDrawer extends FragmentActivity {
+public class AppNavigationDrawer extends FragmentActivity {
 	private DrawerLayout mDrawerLayout;
 	private ActionBarDrawerToggle mDrawerToggle;
 

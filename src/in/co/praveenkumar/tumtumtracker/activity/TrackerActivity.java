@@ -1,7 +1,7 @@
 package in.co.praveenkumar.tumtumtracker.activity;
 
 import in.co.praveenkumar.tumtumtracker.R;
-import in.co.praveenkumar.tumtumtracker.adapter.NavigationDrawer;
+import in.co.praveenkumar.tumtumtracker.adapter.AppNavigationDrawer;
 import in.co.praveenkumar.tumtumtracker.helper.Param;
 import in.co.praveenkumar.tumtumtracker.task.MapHandler;
 import in.co.praveenkumar.tumtumtracker.task.MarkerSync;
@@ -9,7 +9,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 
-public class TrackerActivity extends NavigationDrawer {
+public class TrackerActivity extends AppNavigationDrawer {
 	MapHandler mapHandler;
 
 	@Override

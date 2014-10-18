@@ -4,7 +4,7 @@ import com.google.android.gms.maps.model.LatLng;
 
 public class Param {
 	/**
-	 * URL for feteching json data
+	 * URL for fetching json data
 	 */
 	public static final String dataUrl = "http://tumtum-iitb.org/ttt_data/";
 

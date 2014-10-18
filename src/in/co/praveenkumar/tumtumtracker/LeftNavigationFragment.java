@@ -33,10 +33,9 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 /**
- * -TODO- Remove this fragment and simply add this as listview in Navigation
- * drawer adapter
+ * All work on Left navigation here
  * 
- * @author praveen
+ * @author Praveen Kumar Pendyala (praveen@praveenkumar.co.in)
  * 
  */
 public class LeftNavigationFragment extends Fragment {

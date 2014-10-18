@@ -2,13 +2,9 @@ package in.co.praveenkumar.tumtumtracker;
 
 import in.co.praveenkumar.tumtumtracker.AppInterface.RoutePlotter;
 import in.co.praveenkumar.tumtumtracker.helper.Param;
-import in.co.praveenkumar.tumtumtracker.model.TTTOverviewPoly;
 import in.co.praveenkumar.tumtumtracker.model.TTTRoute;
 import in.co.praveenkumar.tumtumtracker.task.MapHandler;
 import in.co.praveenkumar.tumtumtracker.task.MarkerSync;
-
-import java.util.List;
-
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -39,13 +35,6 @@ public class TrackerActivity extends AppNavigationDrawer implements
 		mapHandler.overlayMarkers();
 
 		new AsyncMarkerSync().execute("");
-
-		// Testing
-		TTTRoute route = TTTRoute.listAll(TTTRoute.class).get(0);
-		List<TTTOverviewPoly> lines = TTTOverviewPoly.find(
-				TTTOverviewPoly.class, "parentid = ?", route.getId() + "");
-		route.setOverviewpolylines(lines);
-		mapHandler.drawRoute(route);
 	}
 
 	/**

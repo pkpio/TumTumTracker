@@ -1,4 +1,4 @@
-package in.co.praveenkumar.tumtumtracker.dialog;
+package in.co.praveenkumar.tumtumtracker;
 
 import in.co.praveenkumar.tumtumtracker.R;
 import in.co.praveenkumar.tumtumtracker.helper.RandomMessage;
@@ -11,10 +11,10 @@ import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.TextView;
 
-public class LoadingMessage extends Dialog {
+public class DialogLoadingMessage extends Dialog {
 	Context context;
 
-	public LoadingMessage(Context context) {
+	public DialogLoadingMessage(Context context) {
 		super(context);
 		this.context = context;
 	}

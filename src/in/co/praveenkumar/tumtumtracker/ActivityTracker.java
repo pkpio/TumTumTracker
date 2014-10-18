@@ -1,8 +1,6 @@
-package in.co.praveenkumar.tumtumtracker.activity;
+package in.co.praveenkumar.tumtumtracker;
 
 import in.co.praveenkumar.tumtumtracker.R;
-import in.co.praveenkumar.tumtumtracker.adapter.AppNavigationDrawer;
-import in.co.praveenkumar.tumtumtracker.dialog.LoadingMessage;
 import in.co.praveenkumar.tumtumtracker.helper.GsonExclude;
 import in.co.praveenkumar.tumtumtracker.helper.Param;
 import in.co.praveenkumar.tumtumtracker.model.TTTOverviewPoly;
@@ -25,24 +23,24 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-public class TrackerActivity extends AppNavigationDrawer {
+public class ActivityTracker extends AppNavigationDrawer {
 	Context context;
 	MapHandler mapHandler;
-	LoadingMessage loadMessage;
+	DialogLoadingMessage loadMessage;
 	int fails = 0;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.context = this;
-		setContentView(R.layout.activity_tracker);
+		setupRoutes();
 
 		// Loading message setup
-		loadMessage = new LoadingMessage(this);
+		loadMessage = new DialogLoadingMessage(this);
 		loadMessage.show();
 
+		setContentView(R.layout.activity_tracker);
 		setUpDrawer();
-		setupRoutes();
 
 		// MapHandler setup
 		mapHandler = new MapHandler(getSupportFragmentManager());

@@ -1,14 +1,17 @@
 package in.co.praveenkumar.tumtumtracker;
 
+import in.co.praveenkumar.tumtumtracker.AppInterface.DrawerStateChanger;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.DrawerLayout;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 
-public class AppNavigationDrawer extends FragmentActivity {
+public class AppNavigationDrawer extends FragmentActivity implements
+		DrawerStateChanger {
 	private DrawerLayout mDrawerLayout;
 	private ActionBarDrawerToggle mDrawerToggle;
 
@@ -64,5 +67,14 @@ public class AppNavigationDrawer extends FragmentActivity {
 		}
 
 		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	public void setDrawerState(Boolean state) {
+		if (state)
+			mDrawerLayout.openDrawer(Gravity.LEFT);
+		else
+			mDrawerLayout.closeDrawer(Gravity.LEFT);
+
 	}
 }

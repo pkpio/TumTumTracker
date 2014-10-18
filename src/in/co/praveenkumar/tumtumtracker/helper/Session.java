@@ -1,9 +1,9 @@
 package in.co.praveenkumar.tumtumtracker.helper;
 
-import java.util.List;
-
 import in.co.praveenkumar.tumtumtracker.model.TTTMarker;
 import in.co.praveenkumar.tumtumtracker.model.TTTSiteResponse;
+
+import java.util.List;
 
 public class Session {
 	public static TTTSiteResponse response;

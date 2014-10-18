@@ -60,7 +60,6 @@ public class MarkerSync {
 				return false;
 
 			// Save to db
-			Session.response = response;
 			response.setId(Param.responseDbId);
 			response.save();
 			List<TTTMarker> markers = response.getMarkers();
@@ -68,6 +67,7 @@ public class MarkerSync {
 				return false;
 			if (markers.size() == 0)
 				return false;
+			Session.response = response;
 			List<TTTMarker> dbMarkers;
 			TTTMarker marker;
 			for (int i = 0; i < markers.size(); i++) {

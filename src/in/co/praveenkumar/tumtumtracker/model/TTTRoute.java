@@ -28,17 +28,8 @@ public class TTTRoute extends SugarRecord<TTTRoute> {
 	int color;
 
 	@Ignore
+	@SerializedName("overviewpolylines")
 	List<TTTOverviewPoly> overviewpolylines;
-
-	// Temp
-	public TTTRoute(String title, String description) {
-		this.title = title;
-		this.description = description;
-	}
-
-	public TTTRoute() {
-
-	}
 
 	/**
 	 * Route id given by TTT site

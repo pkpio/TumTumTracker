@@ -32,8 +32,8 @@ public class TrackerActivity extends AppNavigationDrawer implements
 
 		// MapHandler setup
 		mapHandler = new MapHandler(getSupportFragmentManager());
-		mapHandler.overlayMarkers();
 
+		// Start marker sync
 		new AsyncMarkerSync().execute("");
 	}
 
@@ -54,7 +54,6 @@ public class TrackerActivity extends AppNavigationDrawer implements
 		protected void onPostExecute(Boolean syncStatus) {
 			if (syncStatus) {
 				fails = 0;
-				mapHandler.overlayMarkers();
 				loadMessage.dismiss();
 
 				// Start next update after some wait.
@@ -73,6 +72,7 @@ public class TrackerActivity extends AppNavigationDrawer implements
 				Handler myHandler = new Handler();
 				myHandler.postDelayed(syncLooper, Param.failWait);
 			}
+			mapHandler.overlayMarkers();
 		}
 	}
 

@@ -1,5 +1,6 @@
 package in.co.praveenkumar.tumtumtracker;
 
+import in.co.praveenkumar.tumtumtracker.AppInterface.RoutePlotter;
 import in.co.praveenkumar.tumtumtracker.helper.Param;
 import in.co.praveenkumar.tumtumtracker.model.TTTOverviewPoly;
 import in.co.praveenkumar.tumtumtracker.model.TTTRoute;
@@ -14,7 +15,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.widget.Toast;
 
-public class TrackerActivity extends AppNavigationDrawer {
+public class TrackerActivity extends AppNavigationDrawer implements
+		RoutePlotter {
 	Context context;
 	MapHandler mapHandler;
 	LoadingMessageDialog loadMessage;
@@ -94,4 +96,9 @@ public class TrackerActivity extends AppNavigationDrawer {
 			new AsyncMarkerSync().execute("");
 		}
 	};
+
+	@Override
+	public void plotRoute(TTTRoute route) {
+		mapHandler.drawRoute(route);
+	}
 }

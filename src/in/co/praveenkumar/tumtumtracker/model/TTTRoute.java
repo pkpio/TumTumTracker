@@ -3,6 +3,7 @@ package in.co.praveenkumar.tumtumtracker.model;
 import java.util.List;
 
 import com.orm.SugarRecord;
+import com.orm.dsl.Ignore;
 
 /**
  * TTT route object
@@ -15,7 +16,19 @@ public class TTTRoute extends SugarRecord<TTTRoute> {
 	String title;
 	String description;
 	int color;
+
+	@Ignore
 	List<TTTOverviewPoly> overviewpolylines;
+
+	// Temp
+	public TTTRoute(String title, String description) {
+		this.title = title;
+		this.description = description;
+	}
+
+	public TTTRoute() {
+
+	}
 
 	/**
 	 * Route id given by TTT site

@@ -2,6 +2,7 @@ package in.co.praveenkumar.tumtumtracker.model;
 
 import java.util.List;
 
+import com.google.gson.annotations.SerializedName;
 import com.orm.SugarRecord;
 import com.orm.dsl.Ignore;
 
@@ -12,9 +13,18 @@ import com.orm.dsl.Ignore;
  * 
  */
 public class TTTRoute extends SugarRecord<TTTRoute> {
+
+	// since id is a reserved field in SugarRecord
+	@SerializedName("id")
 	int routeid;
+
+	@SerializedName("title")
 	String title;
+
+	@SerializedName("description")
 	String description;
+
+	@SerializedName("color")
 	int color;
 
 	@Ignore

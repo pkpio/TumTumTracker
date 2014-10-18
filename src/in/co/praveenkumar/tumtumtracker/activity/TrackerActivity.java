@@ -17,12 +17,13 @@ public class TrackerActivity extends AppNavigationDrawer {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_tracker);
-		setUpDrawer();
 
 		// Loading message setup
 		loadMessage = new LoadingMessage(this);
 		loadMessage.show();
+
+		setContentView(R.layout.activity_tracker);
+		setUpDrawer();
 
 		// MapHandler setup
 		mapHandler = new MapHandler(getSupportFragmentManager());
@@ -46,14 +47,14 @@ public class TrackerActivity extends AppNavigationDrawer {
 
 		@Override
 		protected void onPostExecute(Boolean syncStatus) {
-			if (syncStatus)
+			if (syncStatus) {
 				mapHandler.overlayMarkers();
+				loadMessage.dismiss();
+			}
 
 			// Start next update after some wait.
 			Handler myHandler = new Handler();
 			myHandler.postDelayed(syncLooper, Param.frequency);
-
-			loadMessage.dismiss();
 		}
 
 	}

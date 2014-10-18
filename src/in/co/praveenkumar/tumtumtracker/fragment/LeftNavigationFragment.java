@@ -9,6 +9,7 @@ import java.util.Locale;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +27,7 @@ import android.widget.TextView;
  */
 public class LeftNavigationFragment extends Fragment {
 	ListView navListView;
+	LeftNavListAdapter navListAdapter;
 	Context context;
 	List<TTTRoute> routes;
 
@@ -46,10 +48,21 @@ public class LeftNavigationFragment extends Fragment {
 				container, false);
 		this.context = getActivity();
 		// -TODO- Filling routes with overviewpoly data
+
+		TTTRoute route0 = new TTTRoute("1A Chemistry Department",
+				"H13 - Main building - Main gate");
+		// route0.save();
+		TTTRoute route1 = new TTTRoute("1B Lake side",
+				"H13 - Campus Hub - H1 - YP Gate");
+		// route1.save();
+
 		routes = TTTRoute.listAll(TTTRoute.class);
+		Log.d("test", routes.size() + "");
 
 		// Listview
 		navListView = (ListView) rootView.findViewById(R.id.left_nav_list);
+		navListAdapter = new LeftNavListAdapter(context);
+		navListView.setAdapter(navListAdapter);
 
 		return rootView;
 	}

@@ -33,7 +33,7 @@ import com.google.gson.GsonBuilder;
  * @author praveen
  * 
  */
-public class FragmentLeftNavigation extends Fragment {
+public class LeftNavigationFragment extends Fragment {
 	ListView navListView;
 	LeftNavListAdapter navListAdapter;
 	Context context;

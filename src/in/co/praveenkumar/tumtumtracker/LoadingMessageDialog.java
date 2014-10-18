@@ -10,10 +10,10 @@ import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.TextView;
 
-public class DialogLoadingMessage extends Dialog {
+public class LoadingMessageDialog extends Dialog {
 	Context context;
 
-	public DialogLoadingMessage(Context context) {
+	public LoadingMessageDialog(Context context) {
 		super(context);
 		this.context = context;
 	}

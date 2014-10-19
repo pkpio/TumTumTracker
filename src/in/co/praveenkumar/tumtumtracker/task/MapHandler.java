@@ -1,6 +1,7 @@
 package in.co.praveenkumar.tumtumtracker.task;
 
 import in.co.praveenkumar.tumtumtracker.R;
+import in.co.praveenkumar.tumtumtracker.TrackerActivity;
 import in.co.praveenkumar.tumtumtracker.helper.MapHelper;
 import in.co.praveenkumar.tumtumtracker.helper.Param;
 import in.co.praveenkumar.tumtumtracker.helper.Session;
@@ -17,9 +18,12 @@ import java.util.Map.Entry;
 import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.support.v4.app.FragmentManager;
+import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMap.InfoWindowAdapter;
 import com.google.android.gms.maps.GoogleMap.OnMapClickListener;
 import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -32,17 +36,20 @@ import com.google.android.gms.maps.model.PolylineOptions;
 
 @SuppressLint("UseSparseArrays")
 public class MapHandler {
+	TrackerActivity trackerActivity;
 	FragmentManager mFragmentManager;
 	GoogleMap mMap;
 	List<Polyline> mRoute;
+	List<TTTMarker> mMarkers;
 	TTTRoute currentRoute = null;
 
 	// Last open windows detection
 	HashMap<Integer, String> hashMap = new HashMap<Integer, String>();
 	Integer lastOpenWindowsId = 0;
 
-	public MapHandler(FragmentManager mFragmentManager) {
-		this.mFragmentManager = mFragmentManager;
+	public MapHandler(TrackerActivity trackerActivity) {
+		this.trackerActivity = trackerActivity;
+		this.mFragmentManager = trackerActivity.getSupportFragmentManager();
 		setUpMapIfNeeded();
 	}
 
@@ -57,7 +64,7 @@ public class MapHandler {
 		if (Session.response == null)
 			if (!Session.init())
 				return;
-		List<TTTMarker> mMarkers = Session.response.getMarkers();
+		mMarkers = Session.response.getMarkers();
 		TTTMarker mark;
 		Marker marker;
 
@@ -67,15 +74,20 @@ public class MapHandler {
 
 		for (int i = 0; i < mMarkers.size(); i++) {
 			mark = mMarkers.get(i);
-			String snippet = mark.getSpeed() + " kmph   "
-					+ TimeFormat.getNiceRelativeTime(mark.getLastupdated());
+
+			// Position of this marker in the List is saved in snippet for
+			// retrieval in infoWindow
 			marker = mMap.addMarker(new MarkerOptions()
 					.position(new LatLng(mark.getLat(), mark.getLng()))
-					.title(mark.getRoute()).snippet(snippet)
+					.title(mark.getRoute()).snippet(String.valueOf(i))
 					.icon(MapHelper.MarkerIcon(mark.getType())));
+
+			// Add this to the hashMap
+			hashMap.put(mark.getMarkerid(), marker.getId());
+
+			// Reopen infowindow if this was opened before
 			if (mark.getMarkerid() == lastOpenWindowsId)
 				marker.showInfoWindow();
-			hashMap.put(mark.getMarkerid(), marker.getId());
 		}
 	}
 
@@ -140,6 +152,7 @@ public class MapHandler {
 				// The Map is verified. It is now safe to manipulate the map.
 				mMap.setOnMapClickListener(mapClickListener);
 				mMap.setOnMarkerClickListener(markerClickListener);
+				mMap.setInfoWindowAdapter(new TTTInfoWindowAdapter());
 			} else
 				return;
 		}
@@ -164,6 +177,51 @@ public class MapHandler {
 				.newCameraPosition(cameraPosition));
 	}
 
+	class TTTInfoWindowAdapter implements InfoWindowAdapter {
+
+		private final View markerInfoWindow;
+
+		TTTInfoWindowAdapter() {
+			markerInfoWindow = trackerActivity.getLayoutInflater().inflate(
+					R.layout.infowindow, null);
+		}
+
+		@Override
+		public View getInfoContents(Marker marker) {
+			if (marker == null)
+				return null;
+
+			int pos = Integer.parseInt(marker.getSnippet());
+			if (pos < 0 || pos > mMarkers.size())
+				return null;
+
+			TTTMarker mark = mMarkers.get(pos);
+
+			TextView route = ((TextView) markerInfoWindow
+					.findViewById(R.id.marker_route));
+			TextView desc = ((TextView) markerInfoWindow
+					.findViewById(R.id.marker_desc));
+			TextView speed = ((TextView) markerInfoWindow
+					.findViewById(R.id.marker_speed));
+			TextView updated = ((TextView) markerInfoWindow
+					.findViewById(R.id.marker_updated));
+
+			route.setText(mark.getRoute());
+			desc.setText(mark.getDescription());
+			speed.setText(mark.getSpeed() + " kmph");
+			updated.setText(TimeFormat.getNiceRelativeTime(mark
+					.getLastupdated()));
+
+			return markerInfoWindow;
+		}
+
+		@Override
+		public View getInfoWindow(Marker marker) {
+			return null;
+		}
+
+	}
+
 	OnMarkerClickListener markerClickListener = new OnMarkerClickListener() {
 
 		@Override
@@ -182,7 +240,7 @@ public class MapHandler {
 		}
 	};
 
-	public Integer getKeyByValue(String value) {
+	private Integer getKeyByValue(String value) {
 		for (Entry<Integer, String> entry : hashMap.entrySet()) {
 			if (value.equals(entry.getValue())) {
 				return entry.getKey();

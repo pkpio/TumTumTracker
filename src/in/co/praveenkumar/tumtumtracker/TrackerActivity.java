@@ -34,7 +34,7 @@ public class TrackerActivity extends AppNavigationDrawer implements
 		setUpDrawer();
 
 		// MapHandler setup
-		mapHandler = new MapHandler(getSupportFragmentManager());
+		mapHandler = new MapHandler(this);
 
 		// Start marker sync
 		new AsyncMarkerSync().execute("");
@@ -93,5 +93,6 @@ public class TrackerActivity extends AppNavigationDrawer implements
 	@Override
 	public void plotRoute(TTTRoute route) {
 		mapHandler.drawRoute(route);
+		this.getLayoutInflater();
 	}
 }

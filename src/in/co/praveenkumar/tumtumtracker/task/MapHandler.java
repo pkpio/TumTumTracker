@@ -50,6 +50,10 @@ public class MapHandler {
 	 * Overlay current markers. This will clear all old markers.
 	 */
 	public void overlayMarkers() {
+		// Possible if the device doesn't have playservices installed
+		if (mMap == null)
+			return;
+
 		if (Session.response == null)
 			if (!Session.init())
 				return;
@@ -81,6 +85,10 @@ public class MapHandler {
 	 * @param route
 	 */
 	public void drawRoute(TTTRoute route) {
+		// Possible if the device doesn't have playservices installed
+		if (mMap == null)
+			return;
+
 		if (route == null)
 			return;
 

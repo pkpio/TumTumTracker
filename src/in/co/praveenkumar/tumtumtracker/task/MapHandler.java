@@ -59,8 +59,7 @@ public class MapHandler {
 			mark = mMarkers.get(i);
 			marker = mMap.addMarker(new MarkerOptions()
 					.position(new LatLng(mark.getLat(), mark.getLng()))
-					.title(mark.getDescription())
-					.snippet(mark.getLastupdated())
+					.title(mark.getRoute()).snippet(mark.getLastupdated())
 					.icon(MapHelper.MarkerIcon(mark.getType())));
 			if (mark.getMarkerid() == lastOpenWindowsId)
 				marker.showInfoWindow();
@@ -83,10 +82,7 @@ public class MapHandler {
 			return;
 
 		// Clear existing route plot
-		if (mRoute != null)
-			for (int i = 0; i < mRoute.size(); i++)
-				mRoute.get(i).remove();
-		mRoute = new ArrayList<Polyline>();
+		clearRoutes();
 
 		// Loop through each path in the route
 		for (int i = 0; i < polylines.size(); i++) {
@@ -107,6 +103,13 @@ public class MapHandler {
 				mRoute.add(line);
 			}
 		}
+	}
+
+	public void clearRoutes() {
+		if (mRoute != null)
+			for (int i = 0; i < mRoute.size(); i++)
+				mRoute.get(i).remove();
+		mRoute = new ArrayList<Polyline>();
 	}
 
 	private void setUpMapIfNeeded() {

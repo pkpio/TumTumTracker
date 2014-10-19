@@ -1,7 +1,10 @@
 package in.co.praveenkumar.tumtumtracker;
 
+import java.util.List;
+
 import in.co.praveenkumar.tumtumtracker.AppInterface.RoutePlotter;
 import in.co.praveenkumar.tumtumtracker.helper.Param;
+import in.co.praveenkumar.tumtumtracker.model.TTTMarker;
 import in.co.praveenkumar.tumtumtracker.model.TTTRoute;
 import in.co.praveenkumar.tumtumtracker.task.MapHandler;
 import in.co.praveenkumar.tumtumtracker.task.MarkerSync;
@@ -52,27 +55,28 @@ public class TrackerActivity extends AppNavigationDrawer implements
 
 		@Override
 		protected void onPostExecute(Boolean syncStatus) {
-			if (syncStatus) {
+			if (syncStatus)
 				fails = 0;
+			else
+				fails++;
+
+			if (fails == 3)
+				Toast.makeText(context,
+						"Update failed. Data may not be real time!",
+						Toast.LENGTH_LONG).show();
+
+			if (fails == 0 || fails == 3)
 				loadMessage.dismiss();
 
-				// Start next update after some wait.
-				Handler myHandler = new Handler();
-				myHandler.postDelayed(syncLooper, Param.frequency);
-			} else {
-				fails++;
-				if (fails == 3) {
-					loadMessage.dismiss();
-					Toast.makeText(context,
-							"Updated failed. Data may not be real time!",
-							Toast.LENGTH_LONG).show();
-				}
-
-				// Start next attempt after some wait.
-				Handler myHandler = new Handler();
-				myHandler.postDelayed(syncLooper, Param.failWait);
-			}
 			mapHandler.overlayMarkers();
+
+			// Start next update after some wait.
+			Handler myHandler = new Handler();
+			myHandler.postDelayed(syncLooper, Param.frequency);
+
+			List<TTTMarker> markers = TTTMarker.listAll(TTTMarker.class);
+			if (markers != null)
+				System.out.println("Marker size: " + markers.size());
 		}
 	}
 

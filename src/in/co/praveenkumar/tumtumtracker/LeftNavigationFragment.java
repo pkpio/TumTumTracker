@@ -134,6 +134,7 @@ public class LeftNavigationFragment extends Fragment {
 	}
 
 	private class AsyncRouteSync extends AsyncTask<String, Integer, Boolean> {
+		List<TTTRoute> mRoutes = new ArrayList<TTTRoute>();
 
 		@Override
 		protected Boolean doInBackground(String... arg0) {
@@ -141,20 +142,22 @@ public class LeftNavigationFragment extends Fragment {
 			InitRoutesIfRequired();
 
 			// Get all routes in sql db
-			routes = TTTRoute.listAll(TTTRoute.class);
+			mRoutes = TTTRoute.listAll(TTTRoute.class);
 
 			// Set their polyline data from polyline table
-			for (int i = 0; i < routes.size(); i++) {
+			for (int i = 0; i < mRoutes.size(); i++) {
 				List<TTTOverviewPoly> lines = TTTOverviewPoly.find(
-						TTTOverviewPoly.class, "parentid = ?", routes.get(i)
+						TTTOverviewPoly.class, "parentid = ?", mRoutes.get(i)
 								.getId() + "");
-				routes.get(i).setOverviewpolylines(lines);
+				mRoutes.get(i).setOverviewpolylines(lines);
 			}
 			return true;
 		}
 
 		@Override
 		protected void onPostExecute(Boolean syncStatus) {
+			if (syncStatus)
+				routes = mRoutes;
 			navListAdapter.notifyDataSetChanged();
 		}
 	}

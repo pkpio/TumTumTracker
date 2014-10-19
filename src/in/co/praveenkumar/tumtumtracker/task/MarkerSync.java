@@ -30,7 +30,6 @@ public class MarkerSync {
 	public Boolean syncMarkers() {
 		NetworkCall nc = new NetworkCall();
 		try {
-
 			InputStreamReader reader = nc.execute(Param.dataUrl);
 			GsonExclude ex = new GsonExclude();
 			Gson gson = new GsonBuilder()

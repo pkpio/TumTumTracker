@@ -22,13 +22,16 @@ public class Session {
 			response = new TTTSiteResponse();
 
 		List<TTTMarker> markers = TTTMarker.listAll(TTTMarker.class);
-		if (markers == null)
+		if (markers == null) {
+			response = null;
 			return false;
-		if (markers.size() == 0)
+		}
+		if (markers.size() == 0) {
+			response = null;
 			return false;
+		}
 
 		response.setMarkers(markers);
 		return true;
 	}
-
 }

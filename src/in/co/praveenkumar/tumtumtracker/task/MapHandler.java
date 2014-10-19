@@ -35,6 +35,7 @@ public class MapHandler {
 	FragmentManager mFragmentManager;
 	GoogleMap mMap;
 	List<Polyline> mRoute;
+	TTTRoute currentRoute = null;
 
 	// Last open windows detection
 	HashMap<Integer, String> hashMap = new HashMap<Integer, String>();
@@ -55,7 +56,11 @@ public class MapHandler {
 		List<TTTMarker> mMarkers = Session.response.getMarkers();
 		TTTMarker mark;
 		Marker marker;
+
+		// Clear map and draw any previous route plots
 		mMap.clear();
+		drawRoute(currentRoute);
+
 		for (int i = 0; i < mMarkers.size(); i++) {
 			mark = mMarkers.get(i);
 			String snippet = mark.getSpeed() + " kmph   "
@@ -76,7 +81,6 @@ public class MapHandler {
 	 * @param route
 	 */
 	public void drawRoute(TTTRoute route) {
-		System.out.println("Plotting route");
 		if (route == null)
 			return;
 
@@ -84,8 +88,9 @@ public class MapHandler {
 		if (polylines == null)
 			return;
 
-		// Clear existing route plot
+		// Clear existing route plot and set current route
 		clearRoutes();
+		currentRoute = route;
 
 		// Loop through each path in the route
 		for (int i = 0; i < polylines.size(); i++) {
@@ -113,6 +118,7 @@ public class MapHandler {
 			for (int i = 0; i < mRoute.size(); i++)
 				mRoute.get(i).remove();
 		mRoute = new ArrayList<Polyline>();
+		currentRoute = null;
 	}
 
 	private void setUpMapIfNeeded() {

@@ -119,7 +119,7 @@ public class MapHandler {
 			if (mMap != null) {
 				// The Map is verified. It is now safe to manipulate the map.
 				mMap.setOnMapClickListener(mapClickListener);
-				mMap.setOnMarkerClickListener(ttClickListener);
+				mMap.setOnMarkerClickListener(markerClickListener);
 			} else
 				return;
 		}
@@ -144,7 +144,7 @@ public class MapHandler {
 				.newCameraPosition(cameraPosition));
 	}
 
-	OnMarkerClickListener ttClickListener = new OnMarkerClickListener() {
+	OnMarkerClickListener markerClickListener = new OnMarkerClickListener() {
 
 		@Override
 		public boolean onMarkerClick(Marker marker) {

@@ -43,6 +43,7 @@ public class MarkerSync {
 			// Save to db
 			response.setId(Param.responseDbId);
 			response.save();
+
 			List<TTTMarker> markers = response.getMarkers();
 			if (markers == null)
 				return false;
@@ -59,12 +60,10 @@ public class MarkerSync {
 					marker.setId(dbMarkers.get(0).getId());
 				marker.save();
 			}
-
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
 		}
-
-		return true;
 	}
 }

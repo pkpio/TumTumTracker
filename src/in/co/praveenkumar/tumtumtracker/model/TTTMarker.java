@@ -1,5 +1,6 @@
 package in.co.praveenkumar.tumtumtracker.model;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.annotations.SerializedName;
 import com.orm.SugarRecord;
 
@@ -47,6 +48,15 @@ public class TTTMarker extends SugarRecord<TTTMarker> {
 
 	@SerializedName("full")
 	int full;
+
+	public TTTMarker() {
+
+	}
+
+	public TTTMarker(LatLng position) {
+		this.lat = position.latitude;
+		this.lng = position.longitude;
+	}
 
 	/**
 	 * Get the unique marker id given by TTT site

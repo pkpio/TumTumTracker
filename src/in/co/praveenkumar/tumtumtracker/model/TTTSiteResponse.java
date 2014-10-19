@@ -1,5 +1,7 @@
 package in.co.praveenkumar.tumtumtracker.model;
 
+import in.co.praveenkumar.tumtumtracker.helper.Param;
+
 import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
@@ -25,6 +27,10 @@ public class TTTSiteResponse extends SugarRecord<TTTSiteResponse> {
 
 	@SerializedName("title")
 	String title;
+
+	public TTTSiteResponse() {
+		this.center = new TTTMarker(Param.center);
+	}
 
 	/**
 	 * Get the server timestamp of the marker.<br/>

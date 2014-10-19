@@ -14,7 +14,9 @@ import java.util.Locale;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.AssetManager;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -48,13 +50,12 @@ public class LeftNavigationFragment extends Fragment {
 	List<TTTRoute> routes = new ArrayList<TTTRoute>();
 
 	// App menu items
-	String[] appMenuItems = new String[] { "About", "Website", "Developer",
-			"Rate" };
+	String[] appMenuItems = new String[] { "About", "Website", "Report bug",
+			"Rate", "Open source licences" };
 
 	int[] appMenuIcons = new int[] { R.drawable.icon_info_greyscale,
-			R.drawable.icon_people_greyscale,
-			R.drawable.icon_settings_greyscale,
-			R.drawable.icon_people_greyscale };
+			R.drawable.icon_public, R.drawable.icon_bug_report,
+			R.drawable.icon_star, R.drawable.icon_opensource };
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -79,6 +80,36 @@ public class LeftNavigationFragment extends Fragment {
 					mRoutePlotter.plotRoute(routes.get(position));
 					break;
 				case LeftNavListAdapter.TYPE_MENUITEM:
+					position = position - routes.size();
+					switch (position) {
+					case 0:
+
+						break;
+					case 1:
+						Intent browserIntent = new Intent(Intent.ACTION_VIEW,
+								Uri.parse("http://tumtum-iitb.org/track"));
+						startActivity(browserIntent);
+						break;
+					case 2:
+						Intent bugIntent = new Intent(
+								Intent.ACTION_VIEW,
+								Uri.parse("https://github.com/praveendath92/TumTumTracker/issues"));
+						startActivity(bugIntent);
+						break;
+					case 3:
+						Intent rateIntent = new Intent(
+								Intent.ACTION_VIEW,
+								Uri.parse("market://details?id=in.co.praveenkumar.tumtumtracker"));
+						startActivity(rateIntent);
+						break;
+					case 4:
+						Intent i = new Intent(context, BrowserActivity.class);
+						i.putExtra("url",
+								"file:///android_asset/os_licenses.html");
+						i.putExtra("title", "Open Source Licences");
+						startActivity(i);
+						break;
+					}
 					break;
 				}
 				mDrawerStateChanger.setDrawerState(false);

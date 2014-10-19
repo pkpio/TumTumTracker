@@ -4,6 +4,7 @@ import in.co.praveenkumar.tumtumtracker.R;
 import in.co.praveenkumar.tumtumtracker.helper.MapHelper;
 import in.co.praveenkumar.tumtumtracker.helper.Param;
 import in.co.praveenkumar.tumtumtracker.helper.Session;
+import in.co.praveenkumar.tumtumtracker.helper.TimeFormat;
 import in.co.praveenkumar.tumtumtracker.model.TTTMarker;
 import in.co.praveenkumar.tumtumtracker.model.TTTOverviewPoly;
 import in.co.praveenkumar.tumtumtracker.model.TTTRoute;
@@ -57,9 +58,11 @@ public class MapHandler {
 		mMap.clear();
 		for (int i = 0; i < mMarkers.size(); i++) {
 			mark = mMarkers.get(i);
+			String snippet = mark.getSpeed() + " kmph   "
+					+ TimeFormat.getNiceRelativeTime(mark.getLastupdated());
 			marker = mMap.addMarker(new MarkerOptions()
 					.position(new LatLng(mark.getLat(), mark.getLng()))
-					.title(mark.getRoute()).snippet(mark.getLastupdated())
+					.title(mark.getRoute()).snippet(snippet)
 					.icon(MapHelper.MarkerIcon(mark.getType())));
 			if (mark.getMarkerid() == lastOpenWindowsId)
 				marker.showInfoWindow();

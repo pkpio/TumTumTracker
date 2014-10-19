@@ -27,17 +27,26 @@ public class TTTMarker extends SugarRecord<TTTMarker> {
 	@SerializedName("idle")
 	int idle;
 
+	@SerializedName("course")
+	int course;
+
 	@SerializedName("lastupdated")
-	String lastupdated;
+	int lastupdated;
 
 	@SerializedName("changed")
-	String changed;
+	int changed;
 
 	@SerializedName("route")
 	String route;
 
+	@SerializedName("speed")
+	int speed;
+
 	@SerializedName("description")
 	String description;
+
+	@SerializedName("full")
+	int full;
 
 	/**
 	 * Get the unique marker id given by TTT site
@@ -87,22 +96,20 @@ public class TTTMarker extends SugarRecord<TTTMarker> {
 	}
 
 	/**
-	 * Get the lastupdated timestamp of the marker.<br/>
-	 * Time stamp is formatted as YYYY-MM-DD HH:mm:SS (24-hour format).
+	 * Get the lastupdated timestamp of the marker.
 	 * 
 	 * @return lastupdated
 	 */
-	public String getLastupdated() {
+	public int getLastupdated() {
 		return lastupdated;
 	}
 
 	/**
-	 * Get the timestamp at which last position change occurred.<br/>
-	 * Time stamp is formatted as YYYY-MM-DD HH:mm:SS (24-hour format).
+	 * Get the timestamp at which last position change occurred.
 	 * 
 	 * @return changed
 	 */
-	public String getChanged() {
+	public int getChanged() {
 		return changed;
 	}
 
@@ -124,4 +131,30 @@ public class TTTMarker extends SugarRecord<TTTMarker> {
 		return description;
 	}
 
+	/**
+	 * Get bus course
+	 * 
+	 * @return course
+	 */
+	public int getCourse() {
+		return course;
+	}
+
+	/**
+	 * Get marker speed in KMPH
+	 * 
+	 * @return speed
+	 */
+	public int getSpeed() {
+		return speed;
+	}
+
+	/**
+	 * Get bus full status. 0 - not full; 1 - full
+	 * 
+	 * @return fullStatus
+	 */
+	public int getFull() {
+		return full;
+	}
 }

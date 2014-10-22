@@ -53,27 +53,360 @@
         },
         {
             "id": 2,
-            "title": "3B",
-            "description": "Campus-H15-YP",
+            "title": "Hostels 2A",
+            "description": "H12 - H8 - SOM - Main Gate | Main Gate - SOM - H1 - H12",
             "color": 2,
             "overviewpolylines": [
                 {
-                    "line": "covsBqm`|L@@e@Ro@V_A\\]Ne@P{Bp@{@Ni@D_AB_@?}AEq@AmA?wIF_@Bm@Ja@Ne@NmAp@]X]n@MZWdAMl@"
+                    "id": 1,
+                    "title": "Main Gate - H10",
+                    "line": "covsBqm`|L@@e@Ro@V_A\\]Ne@P{Bp@{@Ni@D_AB_@?"
                 },
                 {
+                    "id": 3,
+                    "title": "H10 - Gulmohar",
+                    "line": "}_wsBwg`|L}AEq@AmA?"
+                },
+                {
+                    "id": 4,
+                    "title": "Gulmohar - SOM",
+                    "line": "{fwsB_h`|LwIF_@Bm@Ja@N"
+                },
+                {
+                    "id": 5,
+                    "title": "SOM - NCC",
+                    "line": "cuwsBwf`|Le@NmAp@]X]n@MZWdAMl@"
+                },
+                {
+                    "id": 6,
+                    "title": "NCC - Campus hub",
                     "line": "g|wsB{}_|L}FnU"
                 },
                 {
+                    "id": 7,
+                    "title": "Campus hub - H13",
+                    "line": "edxsBkg_|L}@jDa@~AYpAUz@]fBYhBYtCYzB"
+                },
+                {
+                    "id": 9,
+                    "title": "H1 - NCC",
+                    "line": "coxsB{c`|L~GxAzHdB"
+                },
+                {
+                    "id": 8,
+                    "title": "Campus hub - H1",
+                    "line": "edxsBkg_|LqJoAPuDI_DBu@^qDByAMoBMw@"
+                }
+            ]
+        },
+        {
+            "id": 21,
+            "title": "Hostels 2B",
+            "description": "H12 - H1 - SOM - Main Gate | Main Gate - SOM - H8 - H12",
+            "color": 2,
+            "overviewpolylines": [
+                {
+                    "id": 1,
+                    "title": "Main Gate - H10",
+                    "line": "covsBqm`|L@@e@Ro@V_A\\]Ne@P{Bp@{@Ni@D_AB_@?"
+                },
+                {
+                    "id": 3,
+                    "title": "H10 - Gulmohar",
+                    "line": "}_wsBwg`|L}AEq@AmA?"
+                },
+                {
+                    "id": 4,
+                    "title": "Gulmohar - SOM",
+                    "line": "{fwsB_h`|LwIF_@Bm@Ja@N"
+                },
+                {
+                    "id": 5,
+                    "title": "SOM - NCC",
+                    "line": "cuwsBwf`|Le@NmAp@]X]n@MZWdAMl@"
+                },
+                {
+                    "id": 6,
+                    "title": "NCC - Campus hub",
+                    "line": "g|wsB{}_|L}FnU"
+                },
+                {
+                    "id": 7,
+                    "title": "Campus hub - H13",
+                    "line": "edxsBkg_|L}@jDa@~AYpAUz@]fBYhBYtCYzB"
+                },
+                {
+                    "id": 9,
+                    "title": "H1 - NCC",
+                    "line": "coxsB{c`|L~GxAzHdB"
+                },
+                {
+                    "id": 8,
+                    "title": "Campus hub - H1",
+                    "line": "edxsBkg_|LqJoAPuDI_DBu@^qDByAMoBMw@"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "title": "Lakeside 3A",
+            "description": "Devi temple - SOM - H8 - H12 | H12 - H1 - YP - Main Gate - Devi temple",
+            "color": 2,
+            "overviewpolylines": [
+                {
+                    "id": 1,
+                    "title": "Main Gate - H10",
+                    "line": "covsBqm`|L@@e@Ro@V_A\\]Ne@P{Bp@{@Ni@D_AB_@?"
+                },
+                {
+                    "id": 3,
+                    "title": "H10 - Gulmohar",
+                    "line": "}_wsBwg`|L}AEq@AmA?"
+                },
+                {
+                    "id": 4,
+                    "title": "Gulmohar - SOM",
+                    "line": "{fwsB_h`|LwIF_@Bm@Ja@N"
+                },
+                {
+                    "id": 5,
+                    "title": "SOM - NCC",
+                    "line": "cuwsBwf`|Le@NmAp@]X]n@MZWdAMl@"
+                },
+                {
+                    "id": 6,
+                    "title": "NCC - Campus hub",
+                    "line": "g|wsB{}_|L}FnU"
+                },
+                {
+                    "id": 7,
+                    "title": "Campus hub - H13",
+                    "line": "edxsBkg_|L}@jDa@~AYpAUz@]fBYhBYtCYzB"
+                },
+                {
+                    "id": 9,
+                    "title": "H1 - NCC",
+                    "line": "coxsB{c`|L~GxAzHdB"
+                },
+                {
+                    "id": 8,
+                    "title": "Campus hub - H1",
                     "line": "edxsBkg_|LqJoAPuDI_DBu@^qDByAMoBMw@"
                 },
                 {
+                    "id": 10,
+                    "title": "H1 - H15",
                     "line": "coxsB{c`|L_Dm@cCQ"
                 },
                 {
+                    "id": 11,
+                    "title": "H15 - KV",
                     "line": "gxxsB{e`|LmCwAQMIOCU@UJ_AH_@Ne@LYzAyBnB{B^Ul@G`JEZAJCDGFGFMFG^OzEFF@@B@BLhABBXF|Dc@JCFo@Cq@@OFQHMJKLGFAzJ[RA"
                 },
                 {
+                    "id": 12,
+                    "title": "KVSchool - Gulmohar",
                     "line": "ugwsBy~`|LThO@vA?Z?zA"
+                },
+                {
+                    "id": 2,
+                    "title": "Devi temple - H10",
+                    "line": "aqvsBe__|LXNZJVFT@P?b@GVI^OZQJINUFYFa@Dc@D[@_@@U@S?]Ak@A]Ek@Gq@Ea@M]Yk@Sc@GQCe@Ei@Cm@@QFQFMJKLM??FO@UKSy@i@QKAa@Ak@G{@A[@e@Da@Fi@]aA_@a@aAa@cHjCsE\\EgC"
+                }
+            ]
+        },
+        {
+            "id": 31,
+            "title": "Lakeside 3B",
+            "description": "Devi temple - Main Gate - YP - H1 - H12 | H12 - H8 - SOM - Devi temple",
+            "color": 2,
+            "overviewpolylines": [
+                {
+                    "id": 1,
+                    "title": "Main Gate - H10",
+                    "line": "covsBqm`|L@@e@Ro@V_A\\]Ne@P{Bp@{@Ni@D_AB_@?"
+                },
+                {
+                    "id": 3,
+                    "title": "H10 - Gulmohar",
+                    "line": "}_wsBwg`|L}AEq@AmA?"
+                },
+                {
+                    "id": 4,
+                    "title": "Gulmohar - SOM",
+                    "line": "{fwsB_h`|LwIF_@Bm@Ja@N"
+                },
+                {
+                    "id": 5,
+                    "title": "SOM - NCC",
+                    "line": "cuwsBwf`|Le@NmAp@]X]n@MZWdAMl@"
+                },
+                {
+                    "id": 6,
+                    "title": "NCC - Campus hub",
+                    "line": "g|wsB{}_|L}FnU"
+                },
+                {
+                    "id": 7,
+                    "title": "Campus hub - H13",
+                    "line": "edxsBkg_|L}@jDa@~AYpAUz@]fBYhBYtCYzB"
+                },
+                {
+                    "id": 9,
+                    "title": "H1 - NCC",
+                    "line": "coxsB{c`|L~GxAzHdB"
+                },
+                {
+                    "id": 8,
+                    "title": "Campus hub - H1",
+                    "line": "edxsBkg_|LqJoAPuDI_DBu@^qDByAMoBMw@"
+                },
+                {
+                    "id": 10,
+                    "title": "H1 - H15",
+                    "line": "coxsB{c`|L_Dm@cCQ"
+                },
+                {
+                    "id": 11,
+                    "title": "H15 - KV",
+                    "line": "gxxsB{e`|LmCwAQMIOCU@UJ_AH_@Ne@LYzAyBnB{B^Ul@G`JEZAJCDGFGFMFG^OzEFF@@B@BLhABBXF|Dc@JCFo@Cq@@OFQHMJKLGFAzJ[RA"
+                },
+                {
+                    "id": 12,
+                    "title": "KVSchool - Gulmohar",
+                    "line": "ugwsBy~`|LThO@vA?Z?zA"
+                },
+                {
+                    "id": 2,
+                    "title": "Devi temple - H10",
+                    "line": "aqvsBe__|LXNZJVFT@P?b@GVI^OZQJINUFYFa@Dc@D[@_@@U@S?]Ak@A]Ek@Gq@Ea@M]Yk@Sc@GQCe@Ei@Cm@@QFQFMJKLM??FO@UKSy@i@QKAa@Ak@G{@A[@e@Da@Fi@]aA_@a@aAa@cHjCsE\\EgC"
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "title": "H12/SOM",
+            "description": "SOM - H8 - H12 | H12 - H8 - SOM",
+            "color": 2,
+            "overviewpolylines": [
+                {
+                    "id": 5,
+                    "title": "SOM - NCC",
+                    "line": "cuwsBwf`|Le@NmAp@]X]n@MZWdAMl@"
+                },
+                {
+                    "id": 6,
+                    "title": "NCC - Campus hub",
+                    "line": "g|wsB{}_|L}FnU"
+                },
+                {
+                    "id": 7,
+                    "title": "Campus hub - H13",
+                    "line": "edxsBkg_|L}@jDa@~AYpAUz@]fBYhBYtCYzB"
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "title": "H5/SOM",
+            "description": "SOM - H1 - H5 - SOM",
+            "color": 2,
+            "overviewpolylines": [
+                {
+                    "id": 5,
+                    "title": "SOM - NCC",
+                    "line": "cuwsBwf`|Le@NmAp@]X]n@MZWdAMl@"
+                },
+                {
+                    "id": 6,
+                    "title": "NCC - Campus hub",
+                    "line": "g|wsB{}_|L}FnU"
+                },
+                {
+                    "id": 8,
+                    "title": "Campus hub - H1",
+                    "line": "edxsBkg_|LqJoAPuDI_DBu@^qDByAMoBMw@"
+                },
+                {
+                    "id": 9,
+                    "title": "H1 - NCC",
+                    "line": "coxsB{c`|L~GxAzHdB"
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "title": "H15/Main gate",
+            "description": "H15 - SOM - Main gate | Main gate - SOM - H15",
+            "color": 2,
+            "overviewpolylines": [
+                {
+                    "id": 10,
+                    "title": "H1 - H15",
+                    "line": "coxsB{c`|L_Dm@cCQ"
+                },
+                {
+                    "id": 9,
+                    "title": "H1 - NCC",
+                    "line": "coxsB{c`|L~GxAzHdB"
+                },
+                {
+                    "id": 1,
+                    "title": "Main Gate - H10",
+                    "line": "covsBqm`|L@@e@Ro@V_A\\]Ne@P{Bp@{@Ni@D_AB_@?"
+                },
+                {
+                    "id": 3,
+                    "title": "H10 - Gulmohar",
+                    "line": "}_wsBwg`|L}AEq@AmA?"
+                },
+                {
+                    "id": 4,
+                    "title": "Gulmohar - SOM",
+                    "line": "{fwsB_h`|LwIF_@Bm@Ja@N"
+                },
+                {
+                    "id": 5,
+                    "title": "SOM - NCC",
+                    "line": "cuwsBwf`|Le@NmAp@]X]n@MZWdAMl@"
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "title": "Night Bus",
+            "description": "SOM - YP - H1 - H12 | H12 - H1 - YP - SOM",
+            "color": 2,
+            "overviewpolylines": [
+               {
+                    "id": 10,
+                    "title": "H1 - H15",
+                    "line": "coxsB{c`|L_Dm@cCQ"
+                },
+                {
+                    "id": 8,
+                    "title": "Campus hub - H1",
+                    "line": "edxsBkg_|LqJoAPuDI_DBu@^qDByAMoBMw@"
+                },
+                {
+                    "id": 7,
+                    "title": "Campus hub - H13",
+                    "line": "edxsBkg_|L}@jDa@~AYpAUz@]fBYhBYtCYzB"
+                },
+                {
+                    "id": 11,
+                    "title": "H15 - KV",
+                    "line": "gxxsB{e`|LmCwAQMIOCU@UJ_AH_@Ne@LYzAyBnB{B^Ul@G`JEZAJCDGFGFMFG^OzEFF@@B@BLhABBXF|Dc@JCFo@Cq@@OFQHMJKLGFAzJ[RA"
+                },
+                {
+                    "id": 12,
+                    "title": "KVSchool - Gulmohar",
+                    "line": "ugwsBy~`|LThO@vA?Z?zA"
+                },
+                {
+                    "id": 4,
+                    "title": "Gulmohar - SOM",
+                    "line": "{fwsB_h`|LwIF_@Bm@Ja@N"
                 }
             ]
         }

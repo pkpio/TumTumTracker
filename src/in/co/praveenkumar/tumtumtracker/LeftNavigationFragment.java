@@ -225,8 +225,8 @@ public class LeftNavigationFragment extends Fragment {
 			switch (type) {
 			case TYPE_ROUTE:
 				viewHolder.routeTitle.setText(routes.get(position).getTitle());
-				viewHolder.routeDesc.setText(routes.get(position)
-						.getDescription());
+				viewHolder.routeDesc.setText(lineBreakedDesc(routes.get(
+						position).getDescription()));
 				break;
 			case TYPE_MENUITEM:
 				position = position - routes.size();
@@ -259,6 +259,10 @@ public class LeftNavigationFragment extends Fragment {
 		TextView routeDesc;
 		ImageView menuIcon;
 		TextView menuName;
+	}
+
+	String lineBreakedDesc(String description) {
+		return description.replace(" | ", System.getProperty("line.separator"));
 	}
 
 	void InitRoutesIfRequired() {

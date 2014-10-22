@@ -3,7 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="8dp" >
+    android:paddingBottom="0dp"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
+    android:paddingTop="8dp" >
 
     <TextView
         android:id="@+id/list_route_title"
@@ -17,9 +20,18 @@
         android:id="@+id/list_route_desc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="8dp"
+        android:paddingTop="0dp"
         android:text="Hostel 13 - Main building - Main gate"
-        android:textColor="@color/grey9"
+        android:textColor="@color/grey6"
         android:textSize="14sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/grey13" >
+    </LinearLayout>
 
 </LinearLayout>

@@ -1,22 +1,53 @@
 {
     "title": "TumTumTracker route data",
     "license": "© Praveen Kumar Pendyala. Licensed under CC BY-NC-SA 3.0",
-    "version": "1.0",
+    "version": "1.1",
     "routes": [
         {
             "id": 1,
-            "title": "3A",
-            "description": "H13-Main gate",
-            "color": 3,
+            "title": "Hillside",
+            "description": "Main Gate - H5 - H15 - YP",
+            "color": 1,
             "overviewpolylines": [
                 {
-                    "line": "covsBqm`|L@@e@Ro@V_A\\]Ne@P{Bp@{@Ni@D_AB_@?}AEq@AmA?wIF_@Bm@Ja@Ne@NmAp@]X]n@MZWdAMl@"
+                    "id": 1,
+                    "title": "Main Gate - H10",
+                    "line": "covsBqm`|L@@e@Ro@V_A\\]Ne@P{Bp@{@Ni@D_AB_@?"
                 },
                 {
+                    "id": 3,
+                    "title": "H10 - Gulmohar",
+                    "line": "}_wsBwg`|L}AEq@AmA?"
+                },
+                {
+                    "id": 4,
+                    "title": "Gulmohar - SOM",
+                    "line": "{fwsB_h`|LwIF_@Bm@Ja@N"
+                },
+                {
+                    "id": 5,
+                    "title": "SOM - NCC",
+                    "line": "cuwsBwf`|Le@NmAp@]X]n@MZWdAMl@"
+                },
+                {
+                    "id": 6,
+                    "title": "NCC - Campus hub",
                     "line": "g|wsB{}_|L}FnU"
                 },
                 {
-                    "line": "edxsBkg_|L}@jDa@~AYpAUz@]fBYhBYtCYzB"
+                    "id": 8,
+                    "title": "Campus hub - H1",
+                    "line": "edxsBkg_|LqJoAPuDI_DBu@^qDByAMoBMw@"
+                },
+                {
+                    "id": 10,
+                    "title": "H1 - H15",
+                    "line": "coxsB{c`|L_Dm@cCQ"
+                },
+                {
+                    "id": 11,
+                    "title": "H15 - KV",
+                    "line": "gxxsB{e`|LmCwAQMIOCU@UJ_AH_@Ne@LYzAyBnB{B^Ul@G`JEZAJCDGFGFMFG^OzEFF@@B@BLhABBXF|Dc@JCFo@Cq@@OFQHMJKLGFAzJ[RA"
                 }
             ]
         },

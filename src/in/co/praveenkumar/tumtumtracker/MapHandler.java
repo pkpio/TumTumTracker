@@ -1,7 +1,6 @@
-package in.co.praveenkumar.tumtumtracker.task;
+package in.co.praveenkumar.tumtumtracker;
 
 import in.co.praveenkumar.tumtumtracker.R;
-import in.co.praveenkumar.tumtumtracker.TrackerActivity;
 import in.co.praveenkumar.tumtumtracker.helper.MapHelper;
 import in.co.praveenkumar.tumtumtracker.helper.Param;
 import in.co.praveenkumar.tumtumtracker.helper.Session;
@@ -181,6 +180,7 @@ public class MapHandler {
 
 		private final View markerInfoWindow;
 
+		@SuppressLint("InflateParams")
 		TTTInfoWindowAdapter() {
 			markerInfoWindow = trackerActivity.getLayoutInflater().inflate(
 					R.layout.infowindow, null);
@@ -209,8 +209,7 @@ public class MapHandler {
 			route.setText(mark.getRoute());
 			desc.setText(mark.getDescription());
 			speed.setText(mark.getSpeed() + " kmph");
-			updated.setText(TimeFormat.getNiceRelativeTime(mark
-					.getLastupdated()));
+			updated.setText(TimeFormat.RelativeTime(mark.getLastupdated()));
 
 			return markerInfoWindow;
 		}

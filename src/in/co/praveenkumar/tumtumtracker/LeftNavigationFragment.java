@@ -28,6 +28,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -70,11 +71,21 @@ public class LeftNavigationFragment extends Fragment {
 		navListAdapter = new LeftNavListAdapter(context);
 		navListView.setAdapter(navListAdapter);
 
+		// Added header to the list
+		LinearLayout listHeaderView = (LinearLayout) inflater.inflate(
+				R.layout.list_item_leftnav_header, null);
+		navListView.addHeaderView(listHeaderView);
+
 		// Menu item select actions
 		navListView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
+				// Because there is a header
+				position--;
+				if (position < 0)
+					return;
+
 				switch (navListAdapter.getItemViewType(position)) {
 				case LeftNavListAdapter.TYPE_ROUTE:
 					mRoutePlotter.plotRoute(routes.get(position));

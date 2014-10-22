@@ -6,7 +6,6 @@ import in.co.praveenkumar.tumtumtracker.AppInterface.RoutePlotter;
 import in.co.praveenkumar.tumtumtracker.helper.Param;
 import in.co.praveenkumar.tumtumtracker.model.TTTMarker;
 import in.co.praveenkumar.tumtumtracker.model.TTTRoute;
-import in.co.praveenkumar.tumtumtracker.task.MapHandler;
 import in.co.praveenkumar.tumtumtracker.task.MarkerSync;
 import android.content.Context;
 import android.os.AsyncTask;
@@ -72,7 +71,10 @@ public class TrackerActivity extends AppNavigationDrawer implements
 
 			// Start next update after some wait.
 			Handler myHandler = new Handler();
-			myHandler.postDelayed(syncLooper, Param.frequency);
+			if (fails == 0)
+				myHandler.postDelayed(syncLooper, Param.frequency);
+			else
+				myHandler.postDelayed(syncLooper, Param.failWait);
 
 			List<TTTMarker> markers = TTTMarker.listAll(TTTMarker.class);
 			if (markers != null)

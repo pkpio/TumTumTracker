@@ -86,4 +86,14 @@ public class TTTRoute extends SugarRecord<TTTRoute> {
 		this.overviewpolylines = overviewpolylines;
 	}
 
+	@Override
+	public void save() {
+		super.save();
+		if (overviewpolylines == null)
+			return;
+		for (int i = 0; i < overviewpolylines.size(); i++) {
+			overviewpolylines.get(i).setParentid(getId());
+			overviewpolylines.get(i).save();
+		}
+	}
 }

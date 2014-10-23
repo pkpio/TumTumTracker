@@ -1,6 +1,5 @@
 package in.co.praveenkumar.tumtumtracker;
 
-import in.co.praveenkumar.tumtumtracker.R;
 import in.co.praveenkumar.tumtumtracker.helper.MapHelper;
 import in.co.praveenkumar.tumtumtracker.helper.Param;
 import in.co.praveenkumar.tumtumtracker.helper.Session;
@@ -15,7 +14,6 @@ import java.util.List;
 import java.util.Map.Entry;
 
 import android.annotation.SuppressLint;
-import android.graphics.Color;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.widget.TextView;
@@ -124,7 +122,8 @@ public class MapHandler {
 				Polyline line = mMap.addPolyline(new PolylineOptions()
 						.add(new LatLng(src.latitude, src.longitude),
 								new LatLng(dest.latitude, dest.longitude))
-						.width(2).color(Color.BLUE).geodesic(true));
+						.width(4).color(MapHelper.RouteColor(route.getColor()))
+						.geodesic(true));
 
 				// Add this to the list of points in route.
 				mRoute.add(line);

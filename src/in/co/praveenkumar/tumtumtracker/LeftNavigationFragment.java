@@ -97,7 +97,9 @@ public class LeftNavigationFragment extends Fragment {
 					position = position - routes.size();
 					switch (position) {
 					case 0:
-
+						Intent aboutIntent = new Intent(Intent.ACTION_VIEW,
+								Uri.parse("http://tumtum-iitb.org/track/about/"));
+						startActivity(aboutIntent);
 						break;
 					case 1:
 						Intent browserIntent = new Intent(Intent.ACTION_VIEW,

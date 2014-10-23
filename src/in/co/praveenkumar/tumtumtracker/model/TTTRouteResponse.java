@@ -5,10 +5,10 @@ import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
 public class TTTRouteResponse {
-	
+
 	@SerializedName("title")
 	String title;
-	
+
 	@SerializedName("license")
 	String license;
 

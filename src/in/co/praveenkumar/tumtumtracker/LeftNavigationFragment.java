@@ -97,8 +97,8 @@ public class LeftNavigationFragment extends Fragment {
 					position = position - routes.size();
 					switch (position) {
 					case 0:
-						Intent aboutIntent = new Intent(Intent.ACTION_VIEW,
-								Uri.parse("http://tumtum-iitb.org/track/about/"));
+						Intent aboutIntent = new Intent(Intent.ACTION_VIEW, Uri
+								.parse("http://tumtum-iitb.org/track/about/"));
 						startActivity(aboutIntent);
 						break;
 					case 1:
@@ -308,17 +308,8 @@ public class LeftNavigationFragment extends Fragment {
 			e.printStackTrace();
 		}
 
-		List<TTTOverviewPoly> polylines = new ArrayList<TTTOverviewPoly>();
-
-		for (int i = 0; i < routes.size(); i++) {
-			TTTRoute route = routes.get(i);
-			route.save();
-			polylines = route.getOverviewpolylines();
-			for (int j = 0; j < polylines.size(); j++) {
-				polylines.get(j).setParentid(route.getId());
-				polylines.get(j).save();
-			}
-		}
+		for (int i = 0; i < routes.size(); i++)
+			routes.get(i).save();
 	}
 
 }

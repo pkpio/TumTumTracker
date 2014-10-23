@@ -3,6 +3,7 @@ package in.co.praveenkumar.tumtumtracker;
 import in.co.praveenkumar.tumtumtracker.AppInterface.DrawerStateChanger;
 import in.co.praveenkumar.tumtumtracker.AppInterface.RoutePlotter;
 import in.co.praveenkumar.tumtumtracker.helper.GsonExclude;
+import in.co.praveenkumar.tumtumtracker.helper.MapHelper;
 import in.co.praveenkumar.tumtumtracker.model.TTTOverviewPoly;
 import in.co.praveenkumar.tumtumtracker.model.TTTRoute;
 import in.co.praveenkumar.tumtumtracker.model.TTTRouteResponse;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -58,6 +60,7 @@ public class LeftNavigationFragment extends Fragment {
 			R.drawable.icon_public, R.drawable.icon_bug_report,
 			R.drawable.icon_star, R.drawable.icon_opensource };
 
+	@SuppressLint("InflateParams")
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -213,6 +216,8 @@ public class LeftNavigationFragment extends Fragment {
 					convertView = inflater.inflate(R.layout.list_item_route,
 							parent, false);
 
+					viewHolder.routeIcon = (ImageView) convertView
+							.findViewById(R.id.list_item_route_image);
 					viewHolder.routeTitle = (TextView) convertView
 							.findViewById(R.id.list_route_title);
 					viewHolder.routeDesc = (TextView) convertView
@@ -235,6 +240,8 @@ public class LeftNavigationFragment extends Fragment {
 			// Assign values
 			switch (type) {
 			case TYPE_ROUTE:
+				viewHolder.routeIcon.setImageResource(MapHelper
+						.RouteIcon(routes.get(position).getColor()));
 				viewHolder.routeTitle.setText(routes.get(position).getTitle());
 				viewHolder.routeDesc.setText(lineBreakedDesc(routes.get(
 						position).getDescription()));
@@ -266,6 +273,7 @@ public class LeftNavigationFragment extends Fragment {
 	}
 
 	static class ViewHolder {
+		ImageView routeIcon;
 		TextView routeTitle;
 		TextView routeDesc;
 		ImageView menuIcon;

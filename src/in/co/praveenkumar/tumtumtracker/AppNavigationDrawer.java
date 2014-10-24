@@ -7,6 +7,7 @@ import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -43,6 +44,24 @@ public class AppNavigationDrawer extends ActionBarActivity implements
 
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		getSupportActionBar().setHomeButtonEnabled(true);
+	}
+
+	/**
+	 * Overriding menu key press to show left navigation menu. All other menu
+	 * related functions like onPrepareOptionsMenuare, onCreateOptionsMenu are
+	 * also called once when the Activity is created. So, we are taking this
+	 * approach.
+	 */
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_MENU) {
+			if (!mDrawerLayout.isDrawerOpen(Gravity.LEFT)) {
+				mDrawerLayout.openDrawer(Gravity.LEFT);
+			} else
+				mDrawerLayout.closeDrawer(Gravity.LEFT);
+			return true;
+		}
+		return super.onKeyDown(keyCode, event);
 	}
 
 	@Override

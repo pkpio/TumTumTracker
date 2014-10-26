@@ -55,7 +55,7 @@
         <!-- Google Maps Android API V2 key -->
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyCzYScLkB8PiBCDhhoz6cCsi14dNiCy0Go" />
+            android:value="AIzaSyDc_3c55QKrv_Es9NgVd1N11eRP4mlDPRw" />
 
         <!-- Sugar SqlLite related -->
         <meta-data

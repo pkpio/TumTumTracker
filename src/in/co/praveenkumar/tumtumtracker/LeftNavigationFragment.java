@@ -72,12 +72,14 @@ public class LeftNavigationFragment extends Fragment {
 		// Set routelist with empty data
 		navListView = (ListView) rootView.findViewById(R.id.left_nav_list);
 		navListAdapter = new LeftNavListAdapter(context);
-		navListView.setAdapter(navListAdapter);
 
 		// Added header to the list
 		LinearLayout listHeaderView = (LinearLayout) inflater.inflate(
 				R.layout.list_item_leftnav_header, null);
 		navListView.addHeaderView(listHeaderView);
+
+		// Note: Set adapter only after adding headers. Refer issue #6
+		navListView.setAdapter(navListAdapter);
 
 		// Menu item select actions
 		navListView.setOnItemClickListener(new OnItemClickListener() {
@@ -136,6 +138,12 @@ public class LeftNavigationFragment extends Fragment {
 		new AsyncRouteSync().execute("");
 
 		return rootView;
+	}
+
+	@Override
+	public void onDestroyView() {
+		super.onDestroyView();
+		navListView.setAdapter(null); // Additional precautions for issue #6
 	}
 
 	@Override

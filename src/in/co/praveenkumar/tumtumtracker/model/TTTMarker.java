@@ -95,9 +95,7 @@ public class TTTMarker extends SugarRecord<TTTMarker> {
 	}
 
 	/**
-	 * Get if the marker is idle or not. The idle status if defined by TTT site. <br/>
-	 * 0 - Not idle<br/>
-	 * 1 - Idle
+	 * Get the time in seconds for the tumtum is idle - postion not changed.
 	 * 
 	 * @return idle
 	 */

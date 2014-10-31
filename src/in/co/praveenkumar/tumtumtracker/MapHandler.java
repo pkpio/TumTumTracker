@@ -72,8 +72,9 @@ public class MapHandler {
 		for (int i = 0; i < mMarkers.size(); i++) {
 			mark = mMarkers.get(i);
 
-			// Show only those markers which are not idle for too long
-			if (mark.getIdle() < Param.maxIdle) {
+			// Show only those markers which are not idle for too long or all if
+			// insisted by user.
+			if (mark.getIdle() < Param.maxIdle || Session.showIdle) {
 
 				// Position of this marker in the List is saved in snippet for
 				// retrieval in infoWindow

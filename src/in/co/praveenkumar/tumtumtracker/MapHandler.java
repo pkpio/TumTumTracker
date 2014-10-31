@@ -72,19 +72,23 @@ public class MapHandler {
 		for (int i = 0; i < mMarkers.size(); i++) {
 			mark = mMarkers.get(i);
 
-			// Position of this marker in the List is saved in snippet for
-			// retrieval in infoWindow
-			marker = mMap.addMarker(new MarkerOptions()
-					.position(new LatLng(mark.getLat(), mark.getLng()))
-					.title(mark.getRoute()).snippet(String.valueOf(i))
-					.icon(MapHelper.MarkerIcon(mark.getType())));
+			// Show only those markers which are not idle for too long
+			if (mark.getIdle() < Param.maxIdle) {
 
-			// Add this to the hashMap
-			hashMap.put(mark.getMarkerid(), marker.getId());
+				// Position of this marker in the List is saved in snippet for
+				// retrieval in infoWindow
+				marker = mMap.addMarker(new MarkerOptions()
+						.position(new LatLng(mark.getLat(), mark.getLng()))
+						.title(mark.getRoute()).snippet(String.valueOf(i))
+						.icon(MapHelper.MarkerIcon(mark.getType())));
 
-			// Reopen infowindow if this was opened before
-			if (mark.getMarkerid() == lastOpenWindowsId)
-				marker.showInfoWindow();
+				// Add this to the hashMap
+				hashMap.put(mark.getMarkerid(), marker.getId());
+
+				// Reopen infowindow if this was opened before
+				if (mark.getMarkerid() == lastOpenWindowsId)
+					marker.showInfoWindow();
+			}
 		}
 	}
 

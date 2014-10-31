@@ -4,6 +4,7 @@ import in.co.praveenkumar.tumtumtracker.AppInterface.DrawerStateChanger;
 import in.co.praveenkumar.tumtumtracker.AppInterface.RoutePlotter;
 import in.co.praveenkumar.tumtumtracker.helper.GsonExclude;
 import in.co.praveenkumar.tumtumtracker.helper.MapHelper;
+import in.co.praveenkumar.tumtumtracker.helper.Session;
 import in.co.praveenkumar.tumtumtracker.model.TTTOverviewPoly;
 import in.co.praveenkumar.tumtumtracker.model.TTTRoute;
 import in.co.praveenkumar.tumtumtracker.model.TTTRouteResponse;
@@ -53,11 +54,11 @@ public class LeftNavigationFragment extends Fragment {
 	List<TTTRoute> routes = new ArrayList<TTTRoute>();
 
 	// App menu items
-	String[] appMenuItems = new String[] { "About", "Website", "Report bug",
-			"Rate", "Open source licences" };
+	String[] appMenuItems = new String[] { "Show idle buses", "About",
+			"Report bug", "Rate", "Open source licences" };
 
-	int[] appMenuIcons = new int[] { R.drawable.icon_info_greyscale,
-			R.drawable.icon_public, R.drawable.icon_bug_report,
+	int[] appMenuIcons = new int[] { R.drawable.icon_visibility,
+			R.drawable.icon_info_greyscale, R.drawable.icon_bug_report,
 			R.drawable.icon_star, R.drawable.icon_opensource };
 
 	@SuppressLint("InflateParams")
@@ -99,13 +100,12 @@ public class LeftNavigationFragment extends Fragment {
 					position = position - routes.size();
 					switch (position) {
 					case 0:
-						Intent aboutIntent = new Intent(Intent.ACTION_VIEW, Uri
-								.parse("http://tumtum-iitb.org/track/about/"));
-						startActivity(aboutIntent);
+						Session.showIdle = !Session.showIdle;
+						navListAdapter.notifyDataSetChanged();
 						break;
 					case 1:
 						Intent browserIntent = new Intent(Intent.ACTION_VIEW,
-								Uri.parse("http://tumtum-iitb.org/track"));
+								Uri.parse("http://tumtum-iitb.org/about/"));
 						startActivity(browserIntent);
 						break;
 					case 2:
@@ -258,9 +258,22 @@ public class LeftNavigationFragment extends Fragment {
 				break;
 			case TYPE_MENUITEM:
 				position = position - routes.size();
-				viewHolder.menuName.setText(appMenuItems[position]
-						.toUpperCase(Locale.ENGLISH));
-				viewHolder.menuIcon.setImageResource(appMenuIcons[position]);
+				if (position != 0) {
+					viewHolder.menuName.setText(appMenuItems[position]
+							.toUpperCase(Locale.ENGLISH));
+					viewHolder.menuIcon
+							.setImageResource(appMenuIcons[position]);
+				} else {
+					if (Session.showIdle) {
+						viewHolder.menuName.setText("Hide idle buses");
+						viewHolder.menuIcon
+								.setImageResource(R.drawable.icon_visibility_off);
+					} else {
+						viewHolder.menuName.setText(appMenuItems[position]);
+						viewHolder.menuIcon
+								.setImageResource(appMenuIcons[position]);
+					}
+				}
 				break;
 			}
 			return convertView;

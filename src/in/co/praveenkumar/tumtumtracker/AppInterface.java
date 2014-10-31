@@ -20,6 +20,20 @@ public class AppInterface {
 	}
 
 	/**
+	 * Gives an interface for refreshing markers overlay from left navigation.
+	 * Use when toggling idle show state.
+	 * 
+	 * @author Praveen Kumar Pendyala (praveen@praveenkumar.co.in)
+	 * 
+	 */
+	public interface MarkerRefresh {
+		/**
+		 * Replot markers on map. Use when any session settings are updated.
+		 */
+		public void refreshMarkers();
+	}
+
+	/**
 	 * Gives an interface for changing the state of the app drawers
 	 * 
 	 * @author Praveen Kumar Pendyala (praveen@praveenkumar.co.in)

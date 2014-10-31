@@ -1,6 +1,7 @@
 package in.co.praveenkumar.tumtumtracker;
 
 import in.co.praveenkumar.tumtumtracker.AppInterface.DrawerStateChanger;
+import in.co.praveenkumar.tumtumtracker.AppInterface.MarkerRefresh;
 import in.co.praveenkumar.tumtumtracker.AppInterface.RoutePlotter;
 import in.co.praveenkumar.tumtumtracker.helper.GsonExclude;
 import in.co.praveenkumar.tumtumtracker.helper.MapHelper;
@@ -47,6 +48,7 @@ import com.google.gson.GsonBuilder;
 public class LeftNavigationFragment extends Fragment {
 	static final String DEBUG_TAG = "LeftNavigationFragment";
 	RoutePlotter mRoutePlotter;
+	MarkerRefresh mMarkerRefresh;
 	DrawerStateChanger mDrawerStateChanger;
 	ListView navListView;
 	LeftNavListAdapter navListAdapter;
@@ -102,6 +104,7 @@ public class LeftNavigationFragment extends Fragment {
 					case 0:
 						Session.showIdle = !Session.showIdle;
 						navListAdapter.notifyDataSetChanged();
+						mMarkerRefresh.refreshMarkers();
 						break;
 					case 1:
 						Intent browserIntent = new Intent(Intent.ACTION_VIEW,
@@ -151,6 +154,7 @@ public class LeftNavigationFragment extends Fragment {
 		super.onAttach(activity);
 		try {
 			mRoutePlotter = (RoutePlotter) activity;
+			mMarkerRefresh = (MarkerRefresh) activity;
 			mDrawerStateChanger = (DrawerStateChanger) activity;
 		} catch (ClassCastException castException) {
 			Log.d(DEBUG_TAG, "The activity does not implement the listener");

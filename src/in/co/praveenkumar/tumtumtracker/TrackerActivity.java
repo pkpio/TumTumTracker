@@ -1,5 +1,6 @@
 package in.co.praveenkumar.tumtumtracker;
 
+import in.co.praveenkumar.tumtumtracker.AppInterface.MarkerRefresh;
 import in.co.praveenkumar.tumtumtracker.AppInterface.RoutePlotter;
 import in.co.praveenkumar.tumtumtracker.helper.Param;
 import in.co.praveenkumar.tumtumtracker.model.TTTRoute;
@@ -10,7 +11,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 public class TrackerActivity extends AppNavigationDrawer implements
-		RoutePlotter {
+		RoutePlotter, MarkerRefresh {
 	Context context;
 	MapHandler mapHandler;
 	LoadingMessageDialog loadMessage;
@@ -84,7 +85,14 @@ public class TrackerActivity extends AppNavigationDrawer implements
 
 	@Override
 	public void plotRoute(TTTRoute route) {
-		mapHandler.drawRoute(route);
+		if (mapHandler != null && route != null)
+			mapHandler.drawRoute(route);
+	}
+
+	@Override
+	public void refreshMarkers() {
+		if (mapHandler != null)
+			mapHandler.overlayMarkers();
 	}
 
 	@Override

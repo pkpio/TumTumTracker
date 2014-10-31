@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Session {
 	public static TTTSiteResponse response = null;
+	public static Boolean showIdle = false;
 
 	/**
 	 * Initializes the Session.response with data from Sql db. Returns false

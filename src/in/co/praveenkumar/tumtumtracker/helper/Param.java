@@ -39,5 +39,10 @@ public class Param {
 	 * Default map tilt value. Server may not send this value.
 	 */
 	public static final int tilt = 60;
+	/**
+	 * Maximum idle time of a marker (in seconds) may have. For values greater
+	 * than this, the particular marker won't be shown on the map.
+	 */
+	public static final int maxIdle = 1800;
 
 }

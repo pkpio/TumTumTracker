@@ -85,7 +85,6 @@ public class TrackerActivity extends AppNavigationDrawer implements
 	@Override
 	public void plotRoute(TTTRoute route) {
 		mapHandler.drawRoute(route);
-		this.getLayoutInflater();
 	}
 
 	@Override

@@ -16,3 +16,8 @@ gen/
 local.properties
 
 .settings/
+
+# other files
+.classpath
+project.properties
+.project

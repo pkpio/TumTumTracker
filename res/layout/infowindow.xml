@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:text="23 kmph"
-            android:textColor="@color/grey8"
+            android:textColor="@color/md_grey_800"
             android:textSize="14sp" />
     </LinearLayout>
 
@@ -61,7 +61,7 @@
             android:gravity="right"
             android:padding="5dp"
             android:text="10 minutes ago"
-            android:textColor="@color/grey8"
+            android:textColor="@color/md_grey_800"
             android:textSize="14sp" />
     </LinearLayout>
 

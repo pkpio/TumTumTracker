@@ -2,38 +2,12 @@ TumTumTracker
 =============
 Android application to track the tumtums - internal transportation vehicles at IIT Bombay.
 
-<br/>
 
-Author
-----------------------
-Praveen Kumar Pendyala <<praveen@praveenkumar.co.in>><br/>
-http://praveenkumar.co.in
+Setup
+------------------
+- Clone the repository ```git clone https://github.com/praveendath92/TumTumTracker```
+- Refer Import to Eclipse section below
 
-<br/>
-
-License
-----------------------
-Licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported license.
-
-Read the complete license at,
-http://creativecommons.org/licenses/by-nc-sa/3.0/
-
-<br/>
-
-Develop upon
-------------------------
-You need to obtain a local copy of the repository to start developing. TO do this,
-
-* Fork this repository using the 'fork' icon at the top right and clone to your PC using, <br/>
-```git clone https://github.com/<your-git-username>/TumTumTracker.git```
-		
-     or
-		
-* Download a copy of the project as a zip
- 
-After this proceed to the 'Importing to Eclipse' section
-
-<br/>
 
 Import to Eclipse
 -------------------
@@ -44,13 +18,18 @@ Import to Eclipse
    <https://developers.google.com/maps/documentation/android/start#obtain_a_google_maps_api_key> <br/>
 5. Add the API key to the manifest file as instructed in the above url and you should be good to go.
 
-<br/>
-
 Note: 
 * Try to obtain an API key for the debug keystore used by eclipse for easy development.
 * If there are any issues with initial setup, write to me, I will try to help you out.
 
-<br/>
+
+License
+----------------------
+(c) 2013 - 2015 Praveen Kumar Pendyala and colloborators. 
+Licensed under the [GPL v3][1]
 
 Happy dev'ing :)
+
+
+[1]: https://tldrlegal.com/license/gnu-general-public-license-v3-%28gpl-3%29
 

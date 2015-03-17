@@ -8,8 +8,8 @@ Setup
 1. Clone the repository ```git clone https://github.com/praveendath92/TumTumTracker```
 2. Import the project into eclipse
 3. Refer to External dependencies
-4. Import add them as project dependencies ```project -> properties -> add libraries```
-5. Complete Playservices setup instructions
+4. Add them as project dependencies ```project -> properties -> add libraries```
+5. Complete Playservices setup
 
 
 External dependencies
@@ -32,8 +32,6 @@ License
 ----------------------
 (c) 2013 - 2015 Praveen Kumar Pendyala and colloborators. 
 Licensed under the [GPL v3][1]
-
-Happy dev'ing :)
 
 
 [1]: https://tldrlegal.com/license/gnu-general-public-license-v3-%28gpl-3%29

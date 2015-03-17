@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="in.co.praveenkumar.tumtumtracker"
-    android:versionCode="12"
-    android:versionName="4.0.2" >
+    android:versionCode="13"
+    android:versionName="4.0.3" >
 
     <permission
         android:name="com.example.mapdemo.permission.MAPS_RECEIVE"
@@ -62,7 +62,7 @@
         <!-- Google Maps Android API V2 key -->
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyCzYScLkB8PiBCDhhoz6cCsi14dNiCy0Go" />
+            android:value="AIzaSyDc_3c55QKrv_Es9NgVd1N11eRP4mlDPRw" />
 
         <!-- Sugar SqlLite related -->
         <meta-data

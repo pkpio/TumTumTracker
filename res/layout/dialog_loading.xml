@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:background="@color/wallet_holo_blue_light"
+        android:background="@color/md_light_blue_500"
         android:gravity="center_horizontal"
         android:minHeight="75dp"
         android:paddingTop="50dp" >

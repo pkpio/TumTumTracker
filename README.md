@@ -5,20 +5,25 @@ Android application to track the tumtums - internal transportation vehicles at I
 
 Setup
 ------------------
-- Clone the repository ```git clone https://github.com/praveendath92/TumTumTracker```
-- Refer Import to Eclipse section below
+1. Clone the repository ```git clone https://github.com/praveendath92/TumTumTracker```
+2. Import the project into eclipse
+3. Refer to External dependencies
+4. Import add them as project dependencies ```project -> properties -> add libraries```
+5. Complete Playservices setup instructions
 
 
-Import to Eclipse
--------------------
-1. Import the project into eclipse.
-2. Import ```google-play-services_lib``` from ```/libs``` if not imported along in the previous step
-3. Download Google Play Services using the SDK manager. You will need this when the play-service in ```/libs``` didn't work
-4. Google Map APIs requires an API key sepecific to your apk signing key. So, you need get a new API key. Refer,<br/>
-   <https://developers.google.com/maps/documentation/android/start#obtain_a_google_maps_api_key> <br/>
-5. Add the API key to the manifest file as instructed in the above url and you should be good to go.
+External dependencies
+---------------------
+- ```Google playservices``` imported from ```sdk/extras/google/google_play_services```
+- ```v7 appcompact``` imported from ```sdk/extras/android/support/v7/appcompact```
 
-Note: 
+
+Playservices setup
+--------------------
+1. Google Map APIs requires an API key sepecific to your apk signing key. So, you need get a [new API key][2]
+2. Add the API key to the manifest file as instructed in the above url and you should be good to go.
+
+Tip: 
 * Try to obtain an API key for the debug keystore used by eclipse for easy development.
 * If there are any issues with initial setup, write to me, I will try to help you out.
 
@@ -32,4 +37,5 @@ Happy dev'ing :)
 
 
 [1]: https://tldrlegal.com/license/gnu-general-public-license-v3-%28gpl-3%29
+[2]: https://developers.google.com/maps/documentation/android/start#obtain_a_google_maps_api_key
 

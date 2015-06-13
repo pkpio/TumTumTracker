@@ -4,12 +4,6 @@
     android:versionCode="13"
     android:versionName="4.0.3" >
 
-    <permission
-        android:name="com.example.mapdemo.permission.MAPS_RECEIVE"
-        android:protectionLevel="signature" />
-
-    <uses-permission android:name="com.example.mapdemo.permission.MAPS_RECEIVE" />
-
     <uses-sdk
         android:minSdkVersion="9"
         android:targetSdkVersion="21" />
@@ -28,7 +22,7 @@
     <application
         android:name="com.orm.SugarApp"
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/icon_launcher"
         android:label="@string/app_name"
         android:theme="@style/Theme.TTT" >
         <meta-data
@@ -62,7 +56,7 @@
         <!-- Google Maps Android API V2 key -->
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyDc_3c55QKrv_Es9NgVd1N11eRP4mlDPRw" />
+            android:value="AIzaSyCzYScLkB8PiBCDhhoz6cCsi14dNiCy0Go" />
 
         <!-- Sugar SqlLite related -->
         <meta-data

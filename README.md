@@ -5,15 +5,14 @@ Android application to track the TumTums - internal transportation vehicles at I
 
 Setup
 ------------------
-1. Clone the repository ```git clone https://github.com/praveendath92/TumTumTracker```
-2. Import the project into Android Studio
-3. Do ```Playservices setup``` if the map doesn't load while testing
+1. Clone the repository and Import to ```Android Studio```
+2. Do ```Playservices setup``` if the map doesn't load while testing
 
 
 Playservices setup
 --------------------
-1. Google Map APIs requires an API key sepecific to your apk signing key. So, you need get a [new API key][2]
-2. Add the API key to the manifest file as instructed in the above url and you should be good to go.
+1. Google Map APIs requires an API key sepecific to your apk signing key. Refer [new API key][2]
+2. Add your ```new API key``` to ```AndroidManifest.xml``` file
 
 Tip: 
 * Try to obtain an API key for the debug keystore used by Android studio.
@@ -21,17 +20,17 @@ Tip:
 
 Libraries and tools used
 -------------------
-- Json 
-		Data representation
+- [Json][3] 
+	- Data representation
 
-- Gson
-		Json decoding
+- [Gson][4]
+	- Json decoding
 		
-- Sugar
-		ORM database on top of Sqllite for data persistance
+- [Sugar][6]
+	- ORM database on top of Sqllite for data persistance
 		
-- AppCompact
-		Android support library for older devices
+- [v7-appcompact][6]
+	- Android support library for older devices
 
 
 License
@@ -42,4 +41,8 @@ Licensed under the [GPL v3][1]
 
 [1]: https://tldrlegal.com/license/gnu-general-public-license-v3-%28gpl-3%29
 [2]: https://developers.google.com/maps/documentation/android/start#obtain_a_google_maps_api_key
+[3]: https://en.wikipedia.org/wiki/JSON
+[4]: https://github.com/google/gson
+[5]: https://github.com/satyan/sugar
+[6]: https://developer.android.com/tools/support-library/features.html#v7-appcompat
 

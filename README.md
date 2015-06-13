@@ -1,21 +1,13 @@
 TumTumTracker
 =============
-Android application to track the tumtums - internal transportation vehicles at IIT Bombay.
+Android application to track the TumTums - internal transportation vehicles at IIT Bombay.
 
 
 Setup
 ------------------
 1. Clone the repository ```git clone https://github.com/praveendath92/TumTumTracker```
-2. Import the project into eclipse
-3. Refer to External dependencies
-4. Add them as project dependencies ```project -> properties -> add libraries```
-5. Complete Playservices setup
-
-
-External dependencies
----------------------
-- ```Google playservices``` imported from ```sdk/extras/google/google_play_services```
-- ```v7 appcompact``` imported from ```sdk/extras/android/support/v7/appcompact```
+2. Import the project into Android Studio
+3. Do ```Playservices setup``` if the map doesn't load while testing
 
 
 Playservices setup
@@ -24,8 +16,22 @@ Playservices setup
 2. Add the API key to the manifest file as instructed in the above url and you should be good to go.
 
 Tip: 
-* Try to obtain an API key for the debug keystore used by eclipse for easy development.
-* If there are any issues with initial setup, write to me, I will try to help you out.
+* Try to obtain an API key for the debug keystore used by Android studio.
+
+
+Libraries and tools used
+-------------------
+- Json 
+		Data representation
+
+- Gson
+		Json decoding
+		
+- Sugar
+		ORM database on top of Sqllite for data persistance
+		
+- AppCompact
+		Android support library for older devices
 
 
 License
